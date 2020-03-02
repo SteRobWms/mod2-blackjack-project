@@ -3,7 +3,7 @@ class CreateCards < ActiveRecord::Migration[6.0]
     create_table :cards do |t|
       t.string :suit
       t.string :value
-      t.belongs_to :deck, null: false, foreign_key: true
+      t.integer :deck_id
 
       t.timestamps
     end

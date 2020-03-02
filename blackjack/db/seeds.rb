@@ -13,17 +13,21 @@ Dealer.destroy_all
 PlayerHand.destroy_all
 DealerHand.destroy_all
 PlayerHandCard.destroy_all 
-DealerhandCard.destroy_all 
+DealerHandCard.destroy_all 
 
 
 suit = ["diamonds (♦)", "clubs (♣)", "hearts (♥)","spades (♠)"]
 value = [2,3,4,5,6,7,8,9,10,"J","Q","K","A"]
-#deck tabel
+
+#game table
+g1 = Game.create(min_bet: 20, max_bet: 50)
+
+#deck table
 d1 = Deck.create(game_id: g1.id)
 #card table 
 value.each do |v| 
   suit.each do |s| 
-    Card.create(suit: s, value: v , deck_id: d.id)
+    Card.create(suit: s, value: v , deck_id: d1.id)
   end
 end
 
@@ -37,8 +41,6 @@ p4 = Player.create(name: "player 4", age: 24, bank: 90000)
 
 d1 = Dealer.create(name: "dealer 1", age: 30, years_experience: 10, casino: "Casino 1")
 
-#game table
-g1 = Game.create(min_bet: 20, max_bet: 50, deck_id: d1.id)
 
 #player hand
 p_h1 = PlayerHand.create(player_id: p1.id, game_id: g1.id)

@@ -1,8 +1,8 @@
 class CreateDealerHandCards < ActiveRecord::Migration[6.0]
   def change
     create_table :dealer_hand_cards do |t|
-      t.belongs_to :dealer_hand, null: false, foreign_key: true
-      t.belongs_to :card, null: false, foreign_key: true
+      t.integer :dealer_hand_id
+      t.integer :card_id
 
       t.timestamps
     end

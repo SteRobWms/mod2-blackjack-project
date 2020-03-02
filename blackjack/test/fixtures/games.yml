@@ -3,9 +3,17 @@
 one:
   min_bet: 1
   max_bet: 1
+<<<<<<< HEAD
+  deck_id: 1
+=======
   deck: 
+>>>>>>> eb1308fd4effa639b77a0a10a8001a824a2f6897
 
 two:
   min_bet: 1
   max_bet: 1
+<<<<<<< HEAD
+  deck_id: 1
+=======
   deck: 
+>>>>>>> eb1308fd4effa639b77a0a10a8001a824a2f6897

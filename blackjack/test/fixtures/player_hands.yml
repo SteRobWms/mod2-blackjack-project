@@ -1,6 +1,14 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+<<<<<<< HEAD
+  player_id: 1
+  game_id: 1
+
+two:
+  player_id: 1
+  game_id: 1
+=======
   player: one
   player_hand_card: 
   game: one
@@ -9,3 +17,4 @@ two:
   player: two
   player_hand_card: 
   game: two
+>>>>>>> eb1308fd4effa639b77a0a10a8001a824a2f6897

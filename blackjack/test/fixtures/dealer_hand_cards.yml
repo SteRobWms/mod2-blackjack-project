@@ -1,9 +1,18 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+<<<<<<< HEAD
+  dealer_hand_id: 1
+  card_id: 1
+
+two:
+  dealer_hand_id: 1
+  card_id: 1
+=======
   dealer_hand: one
   card: one
 
 two:
   dealer_hand: two
   card: two
+>>>>>>> eb1308fd4effa639b77a0a10a8001a824a2f6897

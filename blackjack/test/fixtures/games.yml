@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  min_bet: 1
+  max_bet: 1
+  deck: 
+
+two:
+  min_bet: 1
+  max_bet: 1
+  deck: 

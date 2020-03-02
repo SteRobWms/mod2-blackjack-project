@@ -1,11 +1,15 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  value: MyString
   suit: MyString
-  deck_id: 1
+  value: MyString
+  deck: one
+  player_hand_card: 
+  dealer_hand_card: 
 
 two:
-  value: MyString
   suit: MyString
-  deck_id: 1
+  value: MyString
+  deck: two
+  player_hand_card: 
+  dealer_hand_card: 

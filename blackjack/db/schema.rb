@@ -15,7 +15,6 @@ ActiveRecord::Schema.define(version: 2020_03_02_224703) do
   create_table "cards", force: :cascade do |t|
     t.string "suit"
     t.string "value"
-    t.integer "deck_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -39,12 +38,6 @@ ActiveRecord::Schema.define(version: 2020_03_02_224703) do
     t.integer "age"
     t.integer "years_experience"
     t.string "casino"
-  end
-
-  create_table "decks", force: :cascade do |t|
-    t.integer "game_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "games", force: :cascade do |t|

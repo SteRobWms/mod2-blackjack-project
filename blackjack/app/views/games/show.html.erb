@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            table {
+                border-collapse: collapse;
+            }
+            td, th {
+                border: 1px solid #dddddd;
+                text-align: center;
+                padding: 8px;
+            }
+        </style>
+    </head>
+    
+    <body>
+        <h1>Game number <%= @game.id %></h1>
+    
+        <table>
+            <tr>
+                <th>Minimum Bet</th>
+                <th>Maximum Bet</th>
+            </tr>
+            <tr>
+                <td><%= @game.min_bet %></td>
+                <td><%= @game.max_bet %></td>
+            </tr>
+        </table>
+        <br>
+        <table>
+            <tr>
+                <th>Dealer</th>
+                <% @game.dealer_hand.dealer_hand_cards.each do |hand_card| %>
+                    <td><%= card.card[:value]%><%= card.card[:suit] %></td>
+                <% end %>
+            </tr>
+            <% @game.player_hands.each do |p_hand| %>
+                <tr>
+                    <th><%= p_hand.player.name %></th>
+                    <% p_hand.player_hand_cards.each do |hand_card| %>
+                        <td><%= hand_card.card[:value]%><%= hand_card.card[:suit] %><%= hand_card.card.card_to_numbers(hand_card.card) %></td>
+                    <% end %>
+                </tr>    
+            <% end %>
+        </table>
+
+
+
+    </body>
+</html>

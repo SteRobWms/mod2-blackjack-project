@@ -1,0 +1,24 @@
+<h1><%= @player.name %> infor page</h1>
+<label>Age</label><br>
+<%= @player.age %> 
+<br>
+<label>Bank</label><br> 
+<%= @player.bank %> 
+<br>
+<label>Games</label><br>
+<table>
+    <tr>
+        <th>Player hands</th>
+        <th>Dealer hands</th>
+        <th>Win/Lose</th>
+        <th>Amount</th>
+    </tr>
+<% @player.cards.each do |card| %> 
+    <tr>
+        <td><%= @player.find_card(card[:player]) %></td>
+        <td><%= @player.find_card(card[:dealer]) %></td>
+        <td>na</td>
+        <td>na</td>
+    </tr>
+<% end %> 
+</table>

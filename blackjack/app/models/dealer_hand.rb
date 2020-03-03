@@ -13,5 +13,6 @@ class DealerHand < ApplicationRecord
 
   def a_11_to_1
     if self.hand_value
+    end
   end
 end

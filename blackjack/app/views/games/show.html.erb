@@ -31,14 +31,14 @@
             <tr>
                 <th>Dealer</th>
                 <% @game.dealer_hand.dealer_hand_cards.each do |hand_card| %>
-                    <td><%= card.card[:value]%><%= card.card[:suit] %></td>
+                    <td><%= hand_card.card[:value]%><%= hand_card.card[:suit] %></td>
                 <% end %>
             </tr>
             <% @game.player_hands.each do |p_hand| %>
                 <tr>
                     <th><%= p_hand.player.name %></th>
                     <% p_hand.player_hand_cards.each do |hand_card| %>
-                        <td><%= hand_card.card[:value]%><%= hand_card.card[:suit] %><%= hand_card.card.card_to_numbers(hand_card.card) %></td>
+                        <td><%= hand_card.card[:value]%><%= hand_card.card[:suit] %><%# hand_card.card.card_to_numbers(hand_card.card) %></td>
                     <% end %>
                 </tr>    
             <% end %>

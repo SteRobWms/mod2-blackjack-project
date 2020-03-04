@@ -3,9 +3,12 @@ class GamesController < ApplicationController
   
   def new
     @game = Game.new
+    @players = Player.all
+
   end
 
   def create
+    byebug
     @game = Game.new(game_params)
   end
 

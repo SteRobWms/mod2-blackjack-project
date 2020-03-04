@@ -1,2 +1,11 @@
-<h1>Game#new</h1>
-<p>Find me in app/views/game/new.html.erb</p>
+<h1>New Game</h1>
+
+<%= form_with model: @game do |f| %>
+    <%= f.label :player %>
+    <%= f.collection_select(:player, @players, :id, :name)%>
+    <%= f.label :bet %>
+    <%= f.number_field(:bet, in: 10..50, step: 5) %>
+    <br>
+    <br>
+    <%= f.submit "Start Game" %>
+<% end %>

@@ -30,7 +30,7 @@
         <table>
             <tr>
                 <th>Dealer</th>
-                <% @game.dealer_hand.dealer_hand_cards.each do |hand_card| %>
+                <% @game.dealer_hand_cards.each do |hand_card| %>
                     <td><%= hand_card.card[:value]%><%= hand_card.card[:suit] %></td>
                 <% end %>
             </tr>
@@ -43,8 +43,5 @@
                 </tr>    
             <% end %>
         </table>
-
-
-
     </body>
 </html>

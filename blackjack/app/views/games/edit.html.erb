@@ -29,7 +29,7 @@
             <tr>
                 <th>Dealer</th>
                 <% @dealer_hand_cards.each do |hand_card| %>
-                    <td><%= hand_card.card[:value]%> of <%= hand_card.card[:suit] %></td>
+                    <td><img src="<%= hand_card.card[:image]%>" alt="<%= hand_card.card[:value]%> of <%= hand_card.card[:suit] %>"></td>
                 <% end %>
             </tr>
         </table>
@@ -38,34 +38,11 @@
             <tr>
                 <th><%= @player.name %></th>
                 <% @player_hand_cards.each do |hand_card| %>
-                    <td><%= hand_card.card[:value]%> of <%= hand_card.card[:suit] %></td>
+                    <td><img src="<%= hand_card.card[:image]%>" alt="<%= hand_card.card[:value]%> of <%= hand_card.card[:suit] %>"></td>
                 <% end %>
             </tr>
         </table>
-        <%= form_with model: @player_hand do |f| %>
-            <%= f.submit "Hit" %>
-        <% end %>
-
-
-<!--        <table>
-            <tr>
-                <th><%= @dealer.name %></th>
-                <th><% @dealer_hand_cards.count do %>
-                <% end %>
-            <%= @dealer.name %>
-        <h3>Hand</h3>
-            <%= @dealer_hand %>
-            <% @dealer_hand_cards.each do |h_card| %>
-            <p><%= h_card.card[:value]%> of <%= h_card.card[:suit] %></p>
-            <% end %>
-
-        <h2>Player</h2>
-            <%= @player.name %>
-
-        <h3>Hand</h3>
-            <%= @player_hand %>
-            <% @player_hand_cards.each do |h_card| %>
-            <p><%= h_card.card[:value] %> of <%= h_card.card[:suit] %></p>
-            <% end %>-->
+       <button onClick="window.location.reload();"><% @player_hand.deal_card %>Hit</button>
     </body>
 </html>
+<!--onClick="window.location.reload();"-->

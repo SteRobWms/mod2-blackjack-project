@@ -10,8 +10,4 @@ class DealerHand < ApplicationRecord
     end
     value_array.sum
   end
-
-  # def a_11_to_1
-  #   if self.hand_value
-  # end
 end

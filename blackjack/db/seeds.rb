@@ -36,10 +36,10 @@ value.each do |v|
 end
 
 #player table 
-p1 = Player.create(username: "player01", password: "player01",name: "player 1", age: 20, bank: 20000)
-p2 = Player.create(username: "player02", password: "player02",name: "player 2", age: 22, bank: 30000)
-p3 = Player.create(username: "player03", password: "player03",name: "player 3", age: 21, bank: 40000)
-p4 = Player.create(username: "player04", password: "player04",name: "player 4", age: 24, bank: 90000)
+p1 = Player.create(username: "player01", password: "player01",name: "player 1", age: 20, bank: 20000 , security_question: "What was your childhood nickname?", security_answer: "player01")
+p2 = Player.create(username: "player02", password: "player02",name: "player 2", age: 22, bank: 30000, security_question: "What was your childhood nickname?", security_answer: "player02")
+p3 = Player.create(username: "player03", password: "player03",name: "player 3", age: 21, bank: 40000, security_question: "What was your childhood nickname?", security_answer: "player03")
+p4 = Player.create(username: "player04", password: "player04",name: "player 4", age: 24, bank: 90000, security_question: "What was your childhood nickname?", security_answer: "player04")
 
 #dealer table
 

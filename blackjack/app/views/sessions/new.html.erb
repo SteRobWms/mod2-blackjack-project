@@ -1,2 +1,19 @@
-<h1>Sessions#new</h1>
-<p>Find me in app/views/sessions/new.html.erb</p>
+<h1>Login</h1>
+<%= form_with model:@player do |f| %> 
+    <% if flash[:login_error] %> 
+        <li class= "errors"><%= flash[:login_error][0] %></li>
+    <% end %> 
+    <br>
+    <%= f.label "User name" %><br> 
+    <%= f.text_field :username %> 
+    <br>
+    <%= f.label "Password" %><br> 
+    <%= f.password_field :password %> 
+    <br>
+    <br>
+    <%= f.submit "Login" %>
+<% end %> 
+<br>
+<%= button_to "Register" , register_path , method: :get %> 
+<br>
+<%= button_to "Forgot Password" , forgot_password_path , method: :get %> 

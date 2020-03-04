@@ -10,5 +10,4 @@ class DealerHand < ApplicationRecord
     end
     value_array.sum
   end
-
 end

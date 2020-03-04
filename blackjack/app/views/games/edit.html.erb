@@ -33,6 +33,7 @@
                 <% end %>
             </tr>
         </table>
+        <%= button_to("Hit Me", dealer_hand_path(@dealer_hand), method: "patch")%>
         <br>
         <table>
             <tr>
@@ -42,7 +43,7 @@
                 <% end %>
             </tr>
         </table>
-       <button onClick="window.location.reload();"><% @player_hand.deal_card %>Hit</button>
+        <%= button_to("Hit Me", player_hand_path(@player_hand), method: "patch")%>
     </body>
 </html>
 <!--onClick="window.location.reload();"-->

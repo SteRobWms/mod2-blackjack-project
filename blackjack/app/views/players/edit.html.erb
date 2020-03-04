@@ -1,20 +1,34 @@
 <h1>Edit page</h1>
-<%= form_for @player do |f| %> 
-    <% if flash[:errors] %> 
+<%= form_with model:@player do |f| %> 
+    <% if @player.errors.full_messages %> 
         <ul>
-        <% flash[:errors].each do |e| %>
-            <li><%= e %></li>
+        <% @player.errors.full_messages.each do |e| %>
+            <li class= "errors"><%= e %></li>
         <% end %> 
         </ul>  
     <% end %> 
     <br>
-    <%= form_for @player do |f| %> 
-        <%= f.label "Player Name" %><br> 
-        <%= f.text_field :name %>
-        <br>
-        <%= f.label "Age" %><br> 
-        <%= f.text_field :age %>
-        <br>
-        <%= f.submit "Update" %>
-    <% end %> 
+    <%= f.label "Player Name" %><br> 
+    <%= f.text_field :name %>
+    <br>
+    <%= f.label "Age" %><br> 
+    <%= f.text_field :age %>
+    <br>
+    <%= f.label "User name" %><br> 
+    <%= f.text_field :username%>
+    <br>
+    <%= f.label "Security question" %><br> 
+    <%= f.select(:security_question, @security_questions) %>
+    <br>
+    <%= f.label "Answer" %><br> 
+    <%= f.text_field :security_answer%>
+    <br>
+    <%= f.label "Password" %><br> 
+    <%= f.password_field :password%>
+    <br>
+    <%= f.label "Password Confirmation" %><br> 
+    <%= f.password_field :password_confirmation%>
+    <br>
+    <br>
+    <%= f.submit "Update" %>
 <% end %> 

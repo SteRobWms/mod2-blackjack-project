@@ -1,0 +1,23 @@
+<h1>Change password</h1>
+<%= form_with(url: forgot_password_path , method: "patch") do |f| %>
+    <% if flash[:password_errors] %>
+        <li class= "errors"><%= flash[:password_errors][0] %></li>
+    <% end %> 
+    <br>
+    <%= f.label "User Name" %><br> 
+    <%= f.text_field :username %> 
+    <br>
+    <%= f.label "Your Security Question" %><br> 
+    <%= f.select(:security_question, @security_questions) %> 
+    <br>
+    <%= f.label "Your Answer" %><br> 
+    <%= f.text_field :security_answer %> 
+    <br>
+    <%= f.label "New Password" %><br> 
+    <%= f.password_field :password %> 
+    <br>
+    <br>
+    <%= f.submit "Update Password" %> 
+<% end %> 
+<br>
+<%= button_to "Login", login_path, method: :get %> 

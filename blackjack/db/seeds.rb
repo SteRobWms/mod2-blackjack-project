@@ -16,7 +16,7 @@ DealerHandCard.destroy_all
 
 
 suit = ["diamonds (♦)", "clubs (♣)", "hearts (♥)","spades (♠)"]
-value = [2,3,4,5,6,7,8,9,10,"J","Q","K","A"]
+value = ["2","3","4","5","6","7","8","9","10","J","Q","K","A"]
 
 #game table
 g1 = Game.create(min_bet: 20, max_bet: 50)
@@ -31,7 +31,8 @@ g4 = Game.create(min_bet: 50, max_bet: 70)
 #card table 
 value.each do |v| 
   suit.each do |s| 
-    Card.create(suit: s, value: v )
+    key = "#{v.split("").last}#{s.split("").first.upcase}"
+    Card.create(suit: s, value: v , image: "https://deckofcardsapi.com/static/img/#{key}.png" )
   end
 end
 

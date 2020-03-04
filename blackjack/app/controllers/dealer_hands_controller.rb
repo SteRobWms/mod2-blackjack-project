@@ -1,6 +1,9 @@
 class DealerHandsController < ApplicationController
 
     def update
+        @current_hand = DealerHand.find(params[:id])
+        @current_hand.deal_card
+        redirect_to edit_game_path(@current_hand.game)
     end
 
     private

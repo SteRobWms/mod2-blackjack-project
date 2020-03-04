@@ -4,6 +4,10 @@ class Player < ApplicationRecord
     has_many :games, through: :player_hands
     has_many :player_hand_cards, through: :player_hands
 
+    validates :username, presence: true, uniqueness: true
+    validates :age, presence: true, numericality: { only_integer: true , greater_than: 18}
+    validates :security_answer, presence: true 
+
     def games
         Game.all.reverse().select{|game| game.player_hands.pluck(:player_id).include?(self.id)}
     end
@@ -57,7 +61,7 @@ class Player < ApplicationRecord
         dealer = dealer_cards_value(dealer)
         if player.sum <= 21 && dealer.sum <= 21
           if black_jack(player) 
-            "player win with Black Jack"
+            "Black Jack"
           elsif black_jack(player) && black_jack(dealer) 
             "dealer win with Black Jack"
           elsif black_jack(dealer)
@@ -77,7 +81,7 @@ class Player < ApplicationRecord
     end
 
     def amount_won?(your_bet, status)
-        return status == "player win with Black Jack" ? "+ #{your_bet * 1.5}" : status == "player win" ? "+ #{your_bet}" : "- #{your_bet}"
+        return status == "Black Jack" ? "+ #{your_bet * 1.5}" : status == "player win" ? "+ #{your_bet}" : "- #{your_bet}"
     end
 
 end

@@ -24,4 +24,10 @@
     </tr>
 <% end %> 
 </table>
+<br>
+<%= button_to "Edit", edit_player_path ,method: :get %> 
+<br>
+<%= form_with url: "/logout", method: :delete do |f| %> 
+    <%= f.submit "Logout" %>
+<% end %> 
 

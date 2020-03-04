@@ -7,7 +7,15 @@ class PlayersController < ApplicationController
   end
 
   def new
+    @player = Player.new
+  end
 
+  def create 
+    if @player.save
+      redirect_to "/login"
+    else
+      render "new"
+    end
   end
 
   def edit

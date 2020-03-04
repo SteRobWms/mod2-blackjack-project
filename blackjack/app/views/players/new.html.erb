@@ -1,2 +1,13 @@
-<h1>Player#new</h1>
-<p>Find me in app/views/player/new.html.erb</p>
+<h1>Resigter</h1>
+<%= form_with model: @player do |f| %> 
+    <%= f.label :username %> 
+    <%= f.text_field :username %>
+    <br>
+    <%= f.label :password %> 
+    <%= f.text_field :password %>
+    <br>
+    <%= f.label :password_confirmation %> 
+    <%= f.text_field :password_confirmation %>
+    <br>
+    <%= f.submit "Resigter" %> 
+<% end %> 

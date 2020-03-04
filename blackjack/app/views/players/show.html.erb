@@ -11,14 +11,17 @@
         <th>Player hands</th>
         <th>Dealer hands</th>
         <th>Win/Lose</th>
-        <th>Amount</th>
+        <th>Bet Amount</th>
+        <th>Winnings</th>
     </tr>
-<% @player.cards.each do |card| %> 
+<% @player.cards.each do |card_ids| %> 
     <tr>
-        <td><%= @player.find_card(card[:player]) %></td>
-        <td><%= @player.find_card(card[:dealer]) %></td>
-        <td>na</td>
-        <td>na</td>
+        <td><%= @player.find_card(card_ids[:player]) %></td>
+        <td><%= @player.find_card(card_ids[:dealer]) %></td>
+        <td><%= @player.win_lose(card_ids[:player],card_ids[:dealer])%></td>
+        <td><%= card_ids[:bet] %></td>
+        <td><%= @player.amount_won?(card_ids[:bet],@player.win_lose(card_ids[:player],card_ids[:dealer])) %></td>
     </tr>
 <% end %> 
 </table>
+

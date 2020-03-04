@@ -4,5 +4,4 @@ class Game < ApplicationRecord
     has_one :dealer_hand
     has_one :dealer, through: :dealer_hand
 
-    def 
 end

@@ -44,6 +44,10 @@
             </tr>
         </table>
         <%= button_to("Hit Me", player_hand_path(@player_hand), method: "patch")%>
+        <p>Number of Cards Dealt: <%= @game.dealt_cards.count %></p>
+        <p>Cards Dealt <%= @game.dealt_cards.pluck(:card_id).sort %></p>
+        <p>Sample Card <%= @game.draw_unique_card.id %>
+
     </body>
 </html>
 <!--onClick="window.location.reload();"-->

@@ -1,6 +1,7 @@
 class PlayerHandCardsController < ApplicationController
     
     def update
+        @player
     end
 
     private

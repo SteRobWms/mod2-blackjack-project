@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
 
-    # before_action :authenticated
+    before_action :authenticated
 
     def current_player
         if session[:player_id]

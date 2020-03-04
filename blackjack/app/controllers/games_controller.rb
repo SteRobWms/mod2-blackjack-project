@@ -11,10 +11,14 @@ class GamesController < ApplicationController
   end
 
   def create
-    byebug
+    # byebug
     @game = Game.create(min_bet: game_params[:min_bet], max_bet: game_params[:max_bet])
     @player_hand = PlayerHand.create(game_id: @game.id, bet: game_params[:bet], player_id: game_params[:player_id])
     @dealer_hand = DealerHand.create(game_id: @game.id, dealer_id: game_params[:dealer_id])
+    2.times do 
+      @dealer_hand.deal_card
+      @player_hand.deal_card
+    end
 
     redirect_to edit_game_path(@game)
   end

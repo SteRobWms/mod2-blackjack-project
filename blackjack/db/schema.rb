@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(version: 2020_03_02_224703) do
   create_table "cards", force: :cascade do |t|
     t.string "suit"
     t.string "value"
+    t.string "image"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

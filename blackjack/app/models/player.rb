@@ -56,14 +56,14 @@ class Player < ApplicationRecord
         player = player_card_value(player)
         dealer = dealer_cards_value(dealer)
         if player.sum <= 21 && dealer.sum <= 21
-          if player.sum > dealer.sum
-            "player win"
-          elsif black_jack(player) && black_jack(dealer)
-            "dealer win with Black Jack"
-          elsif black_jack(player) 
+          if black_jack(player) 
             "player win with Black Jack"
+          elsif black_jack(player) && black_jack(dealer) 
+            "dealer win with Black Jack"
           elsif black_jack(dealer)
             "dealer win with Black Jack"
+          elsif player.sum > dealer.sum 
+            "player win"
           else
             "player lose"
           end 

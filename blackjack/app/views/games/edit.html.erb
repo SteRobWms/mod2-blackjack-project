@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            table {
+                border-collapse: collapse;
+            }
+            td, th {
+                border: 1px solid #dddddd;
+                text-align: center;
+                padding: 8px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Playing Game <%= @game.id %></h1>
+        <table>
+            <tr>
+                <th>Minimum Bet</th>
+                <th>Maximum Bet</th>
+            </tr>
+            <tr>
+                <td><%= @game.min_bet %></td>
+                <td><%= @game.max_bet %></td>
+            </tr>
+        </table>
+        <br>
+        <table>
+            <tr>
+                <th>Dealer</th>
+                <% @dealer_hand_cards.each do |hand_card| %>
+                    <td><%= hand_card.card[:value]%> of <%= hand_card.card[:suit] %></td>
+                <% end %>
+            </tr>
+        </table>
+        <br>
+        <table>
+            <tr>
+                <th><%= @player.name %></th>
+                <% @player_hand_cards.each do |hand_card| %>
+                    <td><%= hand_card.card[:value]%> of <%= hand_card.card[:suit] %></td>
+                <% end %>
+            </tr>
+        </table>
+        <%= form_with model:@player do |f| %>
+            <%= f.submit "Hit" %>
+        <% end %>
+
+
+<!--        <table>
+            <tr>
+                <th><%= @dealer.name %></th>
+                <th><% @dealer_hand_cards.count do %>
+                <% end %>
+            <%= @dealer.name %>
+        <h3>Hand</h3>
+            <%= @dealer_hand %>
+            <% @dealer_hand_cards.each do |h_card| %>
+            <p><%= h_card.card[:value]%> of <%= h_card.card[:suit] %></p>
+            <% end %>
+
+        <h2>Player</h2>
+            <%= @player.name %>
+
+        <h3>Hand</h3>
+            <%= @player_hand %>
+            <% @player_hand_cards.each do |h_card| %>
+            <p><%= h_card.card[:value] %> of <%= h_card.card[:suit] %></p>
+            <% end %>-->
+    </body>
+</html>

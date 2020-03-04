@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
-  resources :players, only: [:edit, :update,:show]
-  resources :games, only: [:new, :create, :show]
+  resources :player_hands, only: [:update]
+  resources :player_hand_cards, only: [:update]
+  resources :dealer_hands, only: [:update]
+  resources :dealer_hand_cards, only: [:update]
+  resources :players, only: [:show, :edit, :update]
+  resources :games, only: [:new, :create, :show, :edit, :update]
 
   get "/", to: "application#login"
   get "/login", to: "sessions#new", as: "login"

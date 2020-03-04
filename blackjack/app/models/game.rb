@@ -19,4 +19,6 @@ class Game < ApplicationRecord
         end
         next_card
     end
+
+    # def deal_card()
 end

@@ -1,0 +1,2 @@
+class PlayerHandCardsController < ApplicationController
+end

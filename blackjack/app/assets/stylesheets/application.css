@@ -60,7 +60,13 @@ body.login,.register,.forgot_pass{
    background-size: cover;
 }
 
-div.login_form,.register_form,.forgot_pass_form{
+body.player_edit{
+   background: url(https://api.time.com/wp-content/uploads/2019/07/facebook-texas-holdem.jpg);
+   background-repeat: no-repeat;
+   background-size: cover;
+}
+
+div.login_form,.register_form,.forgot_pass_form,.edit_form{
    position: relative;
    border: 1px solid black;
    border-radius: 10px;
@@ -79,6 +85,7 @@ div.login_form,.register_form,.forgot_pass_form{
    padding: 5px;
    margin: 10px;
    transition: ease 1s;
+   font-size: 20px;
 }
 
 .input:hover{

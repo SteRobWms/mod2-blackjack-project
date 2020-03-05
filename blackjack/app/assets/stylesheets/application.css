@@ -107,6 +107,29 @@ div.login_form,.register_form,.forgot_pass_form,.edit_form{
    background-color: green;
 }
 
+
+div.player_content{
+   display: inline-block;
+   position: relative;
+}
+
+div.content_img{
+   float: left;
+}
+
+div.content_button{
+   float: right;
+   margin: 0 4px;
+}
+
+div.player_info{
+   border: 1px solid black;
+}
+
+.player_info_content{
+   display: block;
+}
+
 .game_container{ 
    margin: 0 auto;
    padding: 3px;

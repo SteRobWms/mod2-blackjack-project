@@ -1,12 +1,24 @@
-<h1><%= @player.name %> infor page</h1>
-<label>Age</label><br>
-<%= @player.age %> 
-<br>
-<label>Bank</label><br> 
-<%= @player.bank %> 
-<br>
-<label>Games</label><br>
-<table>
+<div>
+    <div class="player_content content_img"><%= image_tag("pokerimg.png") %></div> 
+    <div class="player_content content_button"><%= button_to "Edit", edit_player_path ,method: :get, class: "button"%></div> 
+    <div class="player_content content_button"><%= button_to "Play Game", new_game_path ,method: :get, class: "button"%></div> 
+    <div class="player_content content_button "><%= form_with url: "/logout", method: :delete do |f| %> 
+    <%= f.submit "Logout" ,class:"button" %>
+<% end %></div>
+</div> 
+<div class="player_info">
+        <h1><%= @player.name %> infor page</h1>
+    <div class= "player_info_content">
+        <label>Age</label>
+        <%= @player.age %> 
+    </div>
+    <div class= "player_info_content">
+        <label>Bank</label>
+        <%= @player.bank %> 
+    </div>
+    <br>
+    <label>Games</label><br>
+    <table>
     <tr>
         <th>Player hands</th>
         <th>Dealer hands</th>
@@ -14,21 +26,19 @@
         <th>Bet Amount</th>
         <th>Winnings</th>
     </tr>
-<% @player.cards.each do |card_ids| %> 
-    <tr>
-        <td><%= @player.find_card(card_ids[:player]) %></td>
-        <td><%= @player.find_card(card_ids[:dealer]) %></td>
-        <td><%= @player.win_lose(card_ids[:player],card_ids[:dealer])%></td>
-        <td><%= card_ids[:bet] %></td>
-        <td><%= @player.amount_won?(card_ids[:bet],@player.win_lose(card_ids[:player],card_ids[:dealer])) %></td>
-    </tr>
-<% end %> 
+    <% @player.cards.each do |card_ids| %> 
+        <tr>
+            <td><%= @player.find_card(card_ids[:player]) %></td>
+            <td><%= @player.find_card(card_ids[:dealer]) %></td>
+            <td><%= @player.win_lose(card_ids[:player],card_ids[:dealer])%></td>
+            <td><%= card_ids[:bet] %></td>
+            <td><%= @player.amount_won?(card_ids[:bet],@player.win_lose(card_ids[:player],card_ids[:dealer])) %></td>
+        </tr>
+    <% end %> 
 </table>
-<br>
-<%= button_to "Edit", edit_player_path ,method: :get %> 
-<br>
-<%= form_with url: "/logout", method: :delete do |f| %> 
-    <%= f.submit "Logout" %>
-<% end %> 
+
+</div> 
+
+
 
 

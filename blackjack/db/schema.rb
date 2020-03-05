@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_02_224703) do
+ActiveRecord::Schema.define(version: 2020_03_05_150052) do
 
   create_table "cards", force: :cascade do |t|
     t.string "suit"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 2020_03_02_224703) do
     t.boolean "active", default: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "hand_value"
   end
 
   create_table "dealers", force: :cascade do |t|
@@ -63,6 +64,7 @@ ActiveRecord::Schema.define(version: 2020_03_02_224703) do
     t.boolean "active", default: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "hand_value"
   end
 
   create_table "players", force: :cascade do |t|

@@ -1,34 +1,41 @@
-<h1>Edit page</h1>
-<%= form_with model:@player do |f| %> 
-    <% if @player.errors.full_messages %> 
-        <ul>
-        <% @player.errors.full_messages.each do |e| %>
-            <li class= "errors"><%= e %></li>
+<body class="player_edit"> 
+    <div class="errors_form">
+        <% if @player.errors.full_messages %> 
+            <% @player.errors.full_messages.each do |e| %>
+                    <label class= "errors"><%= e %></label><br>
+                <% end %> 
+                </ul>  
+            <% end %> 
+    </div>      
+    <div class="edit_form">
+        <h1>Edit page</h1>
+        <%= form_with model:@player do |f| %> 
+            <%= f.label "Player Name" %><br> 
+            <%= f.text_field :name, class: "input" %>
+            <br>
+            <%= f.label "Age" %><br> 
+            <%= f.text_field :age, class: "input" %>
+            <br>
+            <%= f.label "User name" %><br> 
+            <%= f.text_field :username, class: "input"%>
+            <br>
+            <%= f.label "Security question" %><br> 
+            <%= f.select(:security_question, @security_questions) %>
+            <br>
+            <%= f.label "Answer" %><br> 
+            <%= f.text_field :security_answer, class: "input"%>
+            <br>
+            <%= f.label "Password" %><br> 
+            <%= f.password_field :password, class: "input"%>
+            <br>
+            <%= f.label "Password Confirmation" %><br> 
+            <%= f.password_field :password_confirmation, class: "input"%>
+            <br>
+            <br>
+            <%= f.submit "Update", class: "button"%>
         <% end %> 
-        </ul>  
-    <% end %> 
-    <br>
-    <%= f.label "Player Name" %><br> 
-    <%= f.text_field :name %>
-    <br>
-    <%= f.label "Age" %><br> 
-    <%= f.text_field :age %>
-    <br>
-    <%= f.label "User name" %><br> 
-    <%= f.text_field :username%>
-    <br>
-    <%= f.label "Security question" %><br> 
-    <%= f.select(:security_question, @security_questions) %>
-    <br>
-    <%= f.label "Answer" %><br> 
-    <%= f.text_field :security_answer%>
-    <br>
-    <%= f.label "Password" %><br> 
-    <%= f.password_field :password%>
-    <br>
-    <%= f.label "Password Confirmation" %><br> 
-    <%= f.password_field :password_confirmation%>
-    <br>
-    <br>
-    <%= f.submit "Update" %>
-<% end %> 
+        <br>
+        <br>
+        <%= button_to "Back to show page", @player , method: :get, class: "button" %> 
+    </div>
+</body>   

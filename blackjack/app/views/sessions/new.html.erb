@@ -1,19 +1,25 @@
-<h1>Login</h1>
-<%= form_with model:@player do |f| %> 
-    <% if flash[:login_error] %> 
-        <li class= "errors"><%= flash[:login_error][0] %></li>
-    <% end %> 
-    <br>
-    <%= f.label "User name" %><br> 
-    <%= f.text_field :username %> 
-    <br>
-    <%= f.label "Password" %><br> 
-    <%= f.password_field :password %> 
-    <br>
-    <br>
-    <%= f.submit "Login" %>
-<% end %> 
-<br>
-<%= button_to "Register" , register_path , method: :get %> 
-<br>
-<%= button_to "Forgot Password" , forgot_password_path , method: :get %> 
+<body class="login"> 
+    <div class="errors_form">
+        <% if flash[:login_error] %> 
+            <label class= "errors"><%= flash[:login_error][0] %></label>
+        <% end %> 
+    </div>
+    <div class="login_form">
+        <h1>Login</h1>
+        <%= form_with model:@player do |f| %> 
+            <br>
+            <%= f.label "User name"%><br> 
+            <%= f.text_field :username , class: "input" %> 
+            <br>
+            <%= f.label "Password" %><br> 
+            <%= f.password_field :password , class: "input"%> 
+            <br>
+            <br>
+            <%= f.submit "Login" , class: "button"%>
+        <% end %> 
+        <br>
+        <%= button_to "Register" , register_path , method: :get , class: "button"%> 
+        <br>
+        <%= button_to "Forgot Password" , forgot_password_path , method: :get, class: "button"%>   
+    </div>
+</body>

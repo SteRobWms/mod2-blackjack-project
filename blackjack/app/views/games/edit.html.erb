@@ -1,59 +1,73 @@
-<!DOCTYPE html>
-<html>
-    <head>
-    </head>
-    <body>
-        <h1>Playing Game <%= @game.id %></h1>
-        <table>
-            <tr>
-                <th>Minimum Bet</th>
-                <th>Maximum Bet</th>
-                <th>Player Bet</th>
-            </tr>
-            <tr>
-                <td><%= @game.min_bet %></td>
-                <td><%= @game.max_bet %></td>
-                <td><%= @player_hand[:bet] %></td>
-            </tr>
-        </table>
+<body class="game_main_container">
+    <br>
+    <div class= "game_container">
+        <label class= "info">Dealer</label class= "info">
         <br>
-        <div class= "game_container">
-            <h4>Dealer</h4>
-            <div class= "game_card_img">
-            <% @dealer_hand_cards.each do |hand_card| %>
-                <div class= "cards">
+        <br>
+        <div class= "game_card_img">
+        <% @dealer_hand_cards.each_with_index do |hand_card,index| %> 
+            <% if index < 4 %> 
+                <div class= "cards imageOne">
                     <figure><img src="<%= hand_card.card[:image]%>" alt="<%= hand_card.card[:value]%> of <%= hand_card.card[:suit] %>"></figure>
-                    <% if @player_hand.active %>
-                        <figure class="back"></figure>
-                    <% else %> 
-                        <figure class="back" style="animation: fade 1s; animation-fill-mode: forwards;"></figure>
+                    <% if index != 0 %> 
+                        <% if @player_hand.active %>
+                            <figure class="back"></figure>
+                        <% else %> 
+                            <figure class="back" style="animation: fade 1s; animation-fill-mode: forwards;"></figure>
+                        <% end %> 
                     <% end %> 
                 </div>
-            <% end %>
-            </div>
-            <% if !@player_hand.active %> 
+            <% else %> 
+                <div class= "cards imageTwo">
+                    <figure><img src="<%= hand_card.card[:image]%>" alt="<%= hand_card.card[:value]%> of <%= hand_card.card[:suit] %>"></figure>
+                    <% if index != 0 %> 
+                        <% if @player_hand.active %>
+                            <figure class="back"></figure>
+                        <% else %> 
+                            <figure class="back" style="animation: fade 1s; animation-fill-mode: forwards;"></figure>
+                        <% end %> 
+                    <% end %> 
+                </div>
+            <% end %> 
+        <% end %>
+        </div>
+        <% if !@player_hand.active %>
             <div class= "game_details">
-                <label>
+                <label class= "info">
                     <%= @game.hands(@player.find_value(@dealer_hand_cards.pluck(:card_id))).sum %> / 21
                 </label>
             </div>
             <div class= "game_details">
-                <% if @dealer_hand.active %>
-                    <%= button_to("Hit Me", dealer_hand_path(@dealer_hand), method: "patch", class: "btn")%>
-                <% end %>
+                <%= button_to("Hit Me", dealer_hand_path(@dealer_hand), method: "patch", class: "btn")%>
             </div>
-        </div>
-        <% end %>
-        <div class= "game_container">
-            <h4>Player 1</h4>
+        <% end %> 
+    </div>
+    <% (0...4).to_a.each do |player| %> 
+        <div class= "player_<%= player += 1 %>">
+            <label class= "info">Player <%= player %></label>
+            <br>
+            <br>
             <div class= "game_card_img">
-            <% @player_hand_cards.each do |hand_card| %>
-                <img src="<%= hand_card.card[:image]%>" alt="<%= hand_card.card[:value]%> of <%= hand_card.card[:suit] %>">
+            <% @player_hand_cards.each_with_index do |hand_card,index| %>
+                <% if index < 4 %>
+                    <div class="cards imageOne">
+                        <img src="<%= hand_card.card[:image]%>" alt="<%= hand_card.card[:value]%> of <%= hand_card.card[:suit] %>">
+                    </div> 
+                <% else %> 
+                    <div class="cards imageTwo">
+                        <img src="<%= hand_card.card[:image]%>" alt="<%= hand_card.card[:value]%> of <%= hand_card.card[:suit] %>">
+                    </div> 
+                <% end %> 
             <% end %>
             </div>
             <div class= "game_details">
-                <label>
+                <label class= "info">
                     <%= @game.hands(@player.find_value(@player_hand_cards.pluck(:card_id))).sum %> / 21
+                </label>
+            </div>
+            <div class= "game_details">
+                <label class= "info">
+                    <%= @player.bank %> $ 
                 </label>
             </div>
             <div class= "game_details">
@@ -67,6 +81,21 @@
                 <% end %>
             </div>
         </div>
-    </body>
-</html>
-<!--onClick="window.location.reload();"-->
+    <% end %> 
+    <div class="bet_table_div">
+        <h1>Playing Game <%= @game.id %></h1>
+        <br>
+        <table class= "bet_table ">
+            <tr>
+                <th>Minimum Bet</th>
+                <th>Maximum Bet</th>
+                <th>Player Bet</th>
+            </tr>
+            <tr>
+                <td><%= @game.min_bet %></td>
+                <td><%= @game.max_bet %></td>
+                <td><%= @player_hand[:bet] %></td>
+            </tr>
+        </table>
+    </div>
+</body>

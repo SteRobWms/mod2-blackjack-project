@@ -8,7 +8,7 @@
     <%# f.label :player %>
     <%# f.collection_select(:player_id, @players, :id, :name) %>
     <%= f.label :bet %>
-    <%= f.number_field(:bet, in: @game.min_bet..@game.max_bet, step: 5) %>
+    <%= f.select(:bet, [10, 15, 20, 25, 30, 35, 40, 45, 50]) %>
     <br>
     <br>
     <%= f.label :dealer %>
@@ -17,3 +17,9 @@
     <br>
     <%= f.submit "Start Game" %>
 <% end %>
+
+<ul>
+    <% if flash[:error] %>
+        <li class= "errors"><%= flash[:error] %></li>
+    <% end %>
+</ul>

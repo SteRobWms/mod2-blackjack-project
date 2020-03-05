@@ -16,7 +16,9 @@ class Player < ApplicationRecord
     def cards 
       #.take(25) set limit to display
         card_ids = []
+
         self.games.reverse().take(25).each do |game| 
+
             player_hands = game.players.find(self.id).player_hands.where(game_id: game.id) 
             dealer_hands = game.dealer.dealer_hands.where(game_id: game.id)
             card_ids << { player: find_player_card_ids(player_hands), dealer: find_dealer_card_ids(dealer_hands), bet: game.min_bet}

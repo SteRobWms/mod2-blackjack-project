@@ -10,4 +10,5 @@ class Card < ApplicationRecord
     else self[:value] = 10
     end
   end
+ 
 end

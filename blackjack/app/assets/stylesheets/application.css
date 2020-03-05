@@ -13,27 +13,175 @@
  *= require_tree .
  *= require_self
  */
-
- table , td{
-    border: 1px solid black;
-    margin: 0 auto;
+ *{
     text-align: center;
  }
 
-.errors{ 
-   color: red; 
+ table , td{
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 20px;
+ }
+
+label.errors{  
+   color: red;
+   width: 20px;
+   height: 30px;
+   border-radius: 10px;
+   font-size: 30px;
 }  
-.game_container{
-   margin: 0 auto; 
+
+div.errors_form{
+   position: relative;
+   background-color: rgba(255,255,255,0.7);
+   width: 25%;
+   margin: 0;
+   float: right;
+   right: 30em;
+   top: 20em;
+   border-radius: 10px;
+}
+
+body.game_main_container{
+   background: url(https://svgshare.com/i/9YD.svg);
+   background-repeat: no-repeat;
+   background-size: cover;
+   position: absolute;
+   align-items: center;
+   background-position-y: -10em;
+   color: white;
+}
+
+body.login,.register,.forgot_pass{
+   background: url(https://singularityhub.com/wp-content/uploads/2019/07/Casino-poker-chips-on-green-felt-background-artificial-intelligence-shutterstock-658269847-1068x601.jpg);
+   background-repeat: no-repeat;
+   background-size: cover;
+}
+
+body.player_edit{
+   background: url(https://api.time.com/wp-content/uploads/2019/07/facebook-texas-holdem.jpg);
+   background-repeat: no-repeat;
+   background-size: cover;
+}
+
+div.login_form,.register_form,.forgot_pass_form,.edit_form{
+   position: relative;
+   border: 1px solid black;
+   border-radius: 10px;
+   width: 30em;
+   height: 45em;
+   color: white ;
+   left: 15em;
+   top: 2em;
+   font-size: 20px;
+}
+
+.input{
+   width: 50%; 
+   border: none; 
+   border-radius: 4px;
+   padding: 5px;
+   margin: 10px;
+   transition: ease 1s;
+   font-size: 20px;
+}
+
+.input:hover{
+   width: 80%
+}
+
+.button{
+   width: 15em;
+   color: white;
+   background-color: black;
+   font-size: 20px;
+   border-radius: 10px;
+   height: 2em;
+}
+
+.button:hover{
+   margin-left: 20px;
+   color: white; 
+   background-color: green;
+}
+
+
+div.player_content{
+   display: inline-block;
+   position: relative;
+}
+
+div.content_img{
+   float: left;
+}
+
+div.content_button{
+   float: right;
+   margin: 0 4px;
+}
+
+div.player_info{
+   border: 1px solid black;
+}
+
+.player_info_content{
+   display: block;
+}
+
+.game_container{ 
+   margin: 0 auto;
    padding: 3px;
    text-align: center;
+}
+
+.player_1,.player_2,.player_3,.player_4{
+   display: inline-block;
+   position: relative;
+   text-align: center;
+}
+.player_1{
+   bottom: 10px;
+   left: 10em;
+   float: left;
+}
+
+.player_4{
+   bottom: 19em;
+   right: 10em;
+   float: right;
+}
+
+.player_3{
+   top: 17em;
+   float: right;
+   right: 28em;
+}
+
+.player_2{
+   float: left;
+   top: 17em;
+   right: 2em;
+   bottom: 50px;
+}
+
+.bet_table_div{
+   position: relative;
+   top: 4em;
+   right: 15em;
+}
+
+.bet_table{
+   width: 20em;
 }
 
 .game_details{
    display: inline-block;
    margin: 5px;
-   margin-top: 10px;
-   padding: 5px;
+   padding: 10px;
+   margin-top: 5px;
+   font-size: 20px;
 }
 
 img{
@@ -42,16 +190,31 @@ img{
 }
 
 .game_card_img{
+   height: 12em;
+   width: 30em;
+   margin: 0 auto;
+   margin-bottom: 0;
+   position: relative;
+}
+
+.imageOne {
+   z-index: 0;
+}
+
+.imageTwo{
+   z-index: 1;
+   bottom: 158px;
+}
+
+div.imageTwo{
    height: 10em;
-   margin-bottom: 5px;
 }
 
 .cards{
-   height: 100%;
    display: inline-block;
+   height: 100%;
    transform-style: preserve-3d;
    position: relative;
-   transition: transform 1s ease-in-out;
 }
 
 .cards figure{
@@ -60,16 +223,22 @@ img{
 }
 
 figure.back{
-   background-color: black;
    width: 7em;
    height: 164px;
    bottom: 166px;
-   border-radius: 4px;
+   background-color: black;
+   border-radius: 5px;
 }
 
 .btn{
    width: 7em;
    font-size: 12px;
+}
+
+label.info{
+   background-color: black;
+   border-radius: 5px;
+   padding: 2px;
 }
 
 @keyframes fade{

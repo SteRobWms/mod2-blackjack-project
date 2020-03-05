@@ -11,7 +11,6 @@ class GamesController < ApplicationController
   end
 
   def create
-    # @game = Game.create(min_bet: game_params[:min_bet], max_bet: game_params[:max_bet])
     @game = Game.create(min_bet: 10, max_bet: 50)
     @player_hand = PlayerHand.new(game_id: @game.id, bet: game_params[:bet], player_id: session[:player_id])
     if @player_hand.valid?
@@ -22,7 +21,6 @@ class GamesController < ApplicationController
       redirect_to edit_game_path(@game)
     else
       @game.destroy
-      byebug
       flash[:error] = @player_hand.errors.full_messages
       redirect_to new_game_path
     end

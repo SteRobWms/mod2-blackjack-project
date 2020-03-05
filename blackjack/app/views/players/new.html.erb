@@ -1,33 +1,39 @@
-<h1>Resigter</h1>
-<%= form_with model: @player, url: register_path do |f| %> 
-    <% if @player.errors.full_messages %>
-        <% @player.errors.full_messages.each do |e| %> 
-            <li class= "errors"><%= e %></li><br> 
+<body class="register"> 
+    <div class="errors_form">
+        <% if @player.errors.full_messages %>
+            <% @player.errors.full_messages.each do |e| %> 
+                <label class= "errors"><%= e %></label><br>
+            <% end %> 
         <% end %> 
-    <% end %> 
-    <br>
-    <%= f.label "name" %><br> 
-    <%= f.text_field :name %> 
-    <br>
-    <%= f.label "age" %><br> 
-    <%= f.text_field :age %> 
-    <br>
-    <%= f.label :username %><br> 
-    <%= f.text_field :username %>
-    <br>
-    <%= f.label :password %><br>
-    <%= f.password_field :password %>
-    <br>
-    <%= f.label :password_confirmation %><br> 
-    <%= f.password_field :password_confirmation %>
-    <br>
-    <%= f.label :security_question %><br> 
-    <%= f.select(:security_question , @security_questions) %>
-    <br>
-    <%= f.label "Answer" %><br> 
-    <%= f.text_field :security_answer %> 
-    <br>
-    <%= f.submit "Resigter" %> 
-<% end %> 
-<br>
-<%= button_to "Login", login_path, method: :get %> 
+    </div> 
+    <div class= "register_form">   
+        <h1>Resigter</h1>
+        <%= form_with model: @player, url: register_path do |f| %>
+            <br>
+            <%= f.label "name" %><br> 
+            <%= f.text_field :name ,class: "input" %> 
+            <br>
+            <%= f.label "age" %><br> 
+            <%= f.text_field :age ,class: "input" %> 
+            <br>
+            <%= f.label :username %><br> 
+            <%= f.text_field :username ,class: "input" %>
+            <br>
+            <%= f.label :password %><br>
+            <%= f.password_field :password ,class: "input" %>
+            <br>
+            <%= f.label :password_confirmation %><br> 
+            <%= f.password_field :password_confirmation ,class: "input"  %>
+            <br>
+            <%= f.label :security_question %><br> 
+            <%= f.select(:security_question , @security_questions)%>
+            <br>
+            <%= f.label "Answer" %><br> 
+            <%= f.text_field :security_answer, class: "input"%> 
+            <br>
+            <%= f.submit "Resigter", class: "button"%> 
+        <% end %> 
+        <br>
+        <%= button_to "Login", login_path, method: :get , class: "button"%> 
+    </div>    
+</body>  

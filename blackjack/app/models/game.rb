@@ -14,12 +14,16 @@ class Game < ApplicationRecord
     end
 
     #samples all Cards, repeating until test for uniqueness against dealt_cards is true
+    # def draw_unique_card
+    #     next_card = Card.all.sample
+    #     until dealt_cards.pluck(:card_id).include?(next_card.id) == false
+    #         next_card = Card.all.sample
+    #     end
+    #     next_card
+    # end
     def draw_unique_card
-        next_card = Card.all.sample
-        until dealt_cards.pluck(:card_id).include?(next_card.id) == false
-            next_card = Card.all.sample
-        end
-        next_card
+        deck = Card.all + dealt_cards
+        deck.uniq.shuffle.first
     end
 
     # def deal_card()

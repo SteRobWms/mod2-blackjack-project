@@ -32,8 +32,17 @@
                     <td><img src="<%= hand_card.card[:image]%>" alt="<%= hand_card.card[:value]%> of <%= hand_card.card[:suit] %>"></td>
                 <% end %>
             </tr>
+            <tr>
+                <td>
+                    <%= @game.hands(@player.find_value(@dealer_hand_cards.pluck(:card_id))).sum %> / 21
+                </td>
+                <td>
+                <% if @dealer_hand.active %>
+                    <%= button_to("Hit Me", dealer_hand_path(@dealer_hand), method: "patch")%>
+                <% end %> 
+                </td>
+            </tr>
         </table>
-        <%= button_to("Hit Me", dealer_hand_path(@dealer_hand), method: "patch")%>
         <br>
         <table>
             <tr>
@@ -42,8 +51,22 @@
                     <td><img src="<%= hand_card.card[:image]%>" alt="<%= hand_card.card[:value]%> of <%= hand_card.card[:suit] %>"></td>
                 <% end %>
             </tr>
+            <tr>
+                <td>
+                    <%= @game.hands(@player.find_value(@player_hand_cards.pluck(:card_id))).sum %> / 21
+                </td>
+                <td>
+                <% if @player_hand.active %>
+                    <%= button_to("Hit Me", player_hand_path(@player_hand), method: "patch")%>
+                <% end %> 
+                </td>
+                <td>
+                <% if @player_hand.active %>
+                    <%= button_to("Stand", stand_path(@player_hand), method: "post")%>
+                <% end %>
+                </td>
+            </tr>
         </table>
-        <%= button_to("Hit Me", player_hand_path(@player_hand), method: "patch")%>
     </body>
 </html>
 <!--onClick="window.location.reload();"-->

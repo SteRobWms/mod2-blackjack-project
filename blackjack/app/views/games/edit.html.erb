@@ -1,16 +1,6 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <style>
-            table {
-                border-collapse: collapse;
-            }
-            td, th {
-                border: 1px solid #dddddd;
-                text-align: center;
-                padding: 8px;
-            }
-        </style>
     </head>
     <body>
         <h1>Playing Game <%= @game.id %></h1>
@@ -25,48 +15,56 @@
             </tr>
         </table>
         <br>
-        <table>
-            <tr>
-                <th>Dealer</th>
-                <% @dealer_hand_cards.each do |hand_card| %>
-                    <td><img src="<%= hand_card.card[:image]%>" alt="<%= hand_card.card[:value]%> of <%= hand_card.card[:suit] %>"></td>
-                <% end %>
-            </tr>
-            <tr>
-                <td>
+        <div class= "game_container">
+            <h4>Dealer</h4>
+            <div class= "game_card_img">
+            <% @dealer_hand_cards.each do |hand_card| %>
+                <div class= "cards">
+                    <figure><img src="<%= hand_card.card[:image]%>" alt="<%= hand_card.card[:value]%> of <%= hand_card.card[:suit] %>"></figure>
+                    <% if @player_hand.active %>
+                        <figure class="back"></figure>
+                    <% else %> 
+                        <figure class="back" style="animation: fade 1s; animation-fill-mode: forwards;"></figure>
+                    <% end %> 
+                </div>
+            <% end %>
+            </div>
+            <% if !@player_hand.active %> 
+            <div class= "game_details">
+                <label>
                     <%= @game.hands(@player.find_value(@dealer_hand_cards.pluck(:card_id))).sum %> / 21
-                </td>
-                <td>
+                </label>
+            </div>
+            <div class= "game_details">
                 <% if @dealer_hand.active %>
-                    <%= button_to("Hit Me", dealer_hand_path(@dealer_hand), method: "patch")%>
-                <% end %> 
-                </td>
-            </tr>
-        </table>
-        <br>
-        <table>
-            <tr>
-                <th><%= @player.name %></th>
-                <% @player_hand_cards.each do |hand_card| %>
-                    <td><img src="<%= hand_card.card[:image]%>" alt="<%= hand_card.card[:value]%> of <%= hand_card.card[:suit] %>"></td>
+                    <%= button_to("Hit Me", dealer_hand_path(@dealer_hand), method: "patch", class: "btn")%>
                 <% end %>
-            </tr>
-            <tr>
-                <td>
+            </div>
+        </div>
+        <% end %>
+        <div class= "game_container">
+            <h4>Player 1</h4>
+            <div class= "game_card_img">
+            <% @player_hand_cards.each do |hand_card| %>
+                <img src="<%= hand_card.card[:image]%>" alt="<%= hand_card.card[:value]%> of <%= hand_card.card[:suit] %>">
+            <% end %>
+            </div>
+            <div class= "game_details">
+                <label>
                     <%= @game.hands(@player.find_value(@player_hand_cards.pluck(:card_id))).sum %> / 21
-                </td>
-                <td>
+                </label>
+            </div>
+            <div class= "game_details">
                 <% if @player_hand.active %>
                     <%= button_to("Hit Me", player_hand_path(@player_hand), method: "patch")%>
                 <% end %> 
-                </td>
-                <td>
+            </div>
+            <div class= "game_details">
                 <% if @player_hand.active %>
                     <%= button_to("Stand", stand_path(@player_hand), method: "post")%>
                 <% end %>
-                </td>
-            </tr>
-        </table>
+            </div>
+        </div>
     </body>
 </html>
 <!--onClick="window.location.reload();"-->

@@ -20,21 +20,31 @@
     <label>Games</label><br>
     <table>
     <tr>
-        <th>Player hands</th>
-        <th>Dealer hands</th>
-        <th>Win/Lose</th>
-        <th>Bet Amount</th>
+        <th>Game</th>
+        <th>Player hand</th>
+        <th>Dealer hand</th>
+        <th>Outcome</th>
+        <th>Bet</th>
         <th>Winnings</th>
     </tr>
-    <% @player.cards.each do |card_ids| %> 
+<%# @player.cards.each do |card_ids| %>
+    <%# <tr> %>
+        <td><%# @player.find_card(card_ids[:player]) %></td>
+        <td><%# @player.find_card(card_ids[:dealer]) %></td>
+        <td><%# @player.win_lose(card_ids[:player],card_ids[:dealer])%></td>
+        <td><%# card_ids[:bet] %></td>
+        <td><%# @player.amount_won?(card_ids[:bet],@player.win_lose(card_ids[:player],card_ids[:dealer])) %></td>
+    <%# </tr> %>
+<%# end %>
+    <% @player.player_hands.each do |hand| %>
         <tr>
-            <td><%= @player.find_card(card_ids[:player]) %></td>
-            <td><%= @player.find_card(card_ids[:dealer]) %></td>
-            <td><%= @player.win_lose(card_ids[:player],card_ids[:dealer])%></td>
-            <td><%= card_ids[:bet] %></td>
-            <td><%= @player.amount_won?(card_ids[:bet],@player.win_lose(card_ids[:player],card_ids[:dealer])) %></td>
+            <td><%= hand.game_id %></td>
+            <td><%= hand.cards.map{|card| card.written_name} %></td>
+            <td><%= hand.game.dealer_hand.cards.map{|card| card.written_name} %></td>
+            <td><%= "#{hand.hand_value} vs. #{hand.game.dealer_hand.hand_value}" %></td>
         </tr>
-    <% end %> 
+    <% end %>
+    </tr>
 </table>
 
 </div> 

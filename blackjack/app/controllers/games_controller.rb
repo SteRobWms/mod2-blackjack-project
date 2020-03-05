@@ -37,7 +37,7 @@ class GamesController < ApplicationController
   end
 
   def update
-    # byebug
+    @player
   end
 
   private
@@ -47,6 +47,10 @@ class GamesController < ApplicationController
 
   def game_params
     params.require(:game).permit(:bet, :min_bet, :max_bet, :player_id, :dealer_id)
+  end
+
+  def winnings_params
+    params.require(:game).permit(:winnings[])
   end
   
 end

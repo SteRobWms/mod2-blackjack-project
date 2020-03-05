@@ -8,5 +8,8 @@ class PlayerHand < ApplicationRecord
     PlayerHandCard.create(player_hand_id: self.id, card_id: self.game.draw_unique_card.id)
   end
 
+  def stand
+    active = false
+  end
 
 end

@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   post "/register", to: "players#create"
   get "/forgot_password", to: "passwords#edit", as: "forgot_password"
   patch "/forgot_password", to: "passwords#update"
+  post "/player_hands/:id", to: "player_hands#stand", as: "stand"
 end
 
 

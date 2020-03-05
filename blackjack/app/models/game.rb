@@ -22,8 +22,8 @@ class Game < ApplicationRecord
     #     next_card
     # end
     def draw_unique_card
-        deck = Card.all + dealt_cards
-        deck.uniq.shuffle.first
+        deck = Card.all - self.dealt_cards
+        deck.shuffle.first
     end
 
     # def deal_card()

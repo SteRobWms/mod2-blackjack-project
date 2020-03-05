@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <style>
+            body {
+            background-image: url("https://svgshare.com/i/9YD.svg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-color: #cccccc;
+            }
+        </style>
     </head>
     <body>
         <h1>Playing Game <%= @game.id %></h1>
@@ -34,7 +42,7 @@
             <% if !@player_hand.active %> 
             <div class= "game_details">
                 <label>
-                    <%= @game.hands(@player.find_value(@dealer_hand_cards.pluck(:card_id))).sum %> / 21
+                    <%= @dealer_hand.hand_value %> / 21
                 </label>
             </div>
             <div class= "game_details">
@@ -53,7 +61,7 @@
             </div>
             <div class= "game_details">
                 <label>
-                    <%= @game.hands(@player.find_value(@player_hand_cards.pluck(:card_id))).sum %> / 21
+                    <%= @player_hand.hand_value %> / 21
                 </label>
             </div>
             <div class= "game_details">

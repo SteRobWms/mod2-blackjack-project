@@ -7,7 +7,6 @@ class PlayersController < ApplicationController
   before_action :security_questions, only: [:new, :edit]
 
   def show
-
   end
 
   def new

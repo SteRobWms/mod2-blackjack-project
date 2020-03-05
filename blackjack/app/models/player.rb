@@ -13,13 +13,12 @@ class Player < ApplicationRecord
     #     Game.all.reverse().select{|game| game.player_hands.pluck(:player_id).include?(self.id)}
     # end
 
-    # def games
-    #   games
-    # end
-
     def cards 
+      #.take(25) set limit to display
         card_ids = []
-        self.games.reverse().each do |game| 
+
+        self.games.reverse().take(25).each do |game| 
+
             player_hands = game.players.find(self.id).player_hands.where(game_id: game.id) 
             dealer_hands = game.dealer.dealer_hands.where(game_id: game.id)
             card_ids << { player: find_player_card_ids(player_hands), dealer: find_dealer_card_ids(dealer_hands), bet: game.min_bet}
@@ -62,20 +61,20 @@ class Player < ApplicationRecord
       #dealer same as player
         player = player_card_value(player)
         dealer = dealer_cards_value(dealer)
-        if player.sum <= 21 && dealer.sum <= 21
+        if player.sum <= 21 
           if black_jack(player) 
             "Black Jack"
           elsif black_jack(player) && black_jack(dealer) 
             "Push" 
           elsif black_jack(dealer)
             "dealer win with Black Jack"
-          elsif player.sum > dealer.sum 
+          elsif player.sum > dealer.sum || dealer.sum > 21
             "player win"
           else
             "player lose"
           end 
         else
-          "dealer win"
+          "player lose"
         end
     end
       

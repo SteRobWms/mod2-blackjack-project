@@ -6,6 +6,7 @@ class ApplicationRecord < ActiveRecord::Base
   # def hand_value(hand)
   #   hand."#{hand.class}_card".map{|hand_card| hand_card.card.value
   # end
+  
   def convert_to_num(array)
     new_array = []
     array.each{|card| 

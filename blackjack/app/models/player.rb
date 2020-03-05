@@ -8,10 +8,14 @@ class Player < ApplicationRecord
     validates :age, presence: true, numericality: { only_integer: true , greater_than: 18}
     validates :security_answer, presence: true 
 
-    def games
-      # find all the game belong to the player and reverse the order
-        Game.all.reverse().select{|game| game.player_hands.pluck(:player_id).include?(self.id)}
-    end
+    # def games
+    #   # find all the game belong to the player and reverse the order
+    #     Game.all.reverse().select{|game| game.player_hands.pluck(:player_id).include?(self.id)}
+    # end
+
+    # def games
+    #   games
+    # end
 
     def cards 
         card_ids = []

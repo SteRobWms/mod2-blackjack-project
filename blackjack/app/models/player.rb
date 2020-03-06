@@ -24,4 +24,23 @@ class Player < ApplicationRecord
         outcome_hash
     end
 
+    def total_won
+        total = 0
+        self.player_hands.each{|hand| total += hand.payout}
+        total
+    end
+
+    def total_bet
+        total = 0
+        self.player_hands.each{|hand| total += hand.bet}
+        total
+    end
+
+    def total_winnings
+        self.total_won - self.total_bet
+    end
+
+    def average_winnings
+        (self.total_winnings.to_f / self.total_hand_count).round(2)
+    end
 end

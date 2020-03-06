@@ -46,6 +46,44 @@ class PlayerHand < ApplicationRecord
     end
   end
 
+  def outcome
+    dealer_hand = self.game.dealer_hand
+    if dealer_hand.blackjack?
+      if self.blackjack?
+        return "push"
+      else
+        return "dealer blackjack"
+      end
+    elsif self.blackjack?
+      return "blackjack"
+    elsif self.hand_value > 21
+      return "bust"
+    elsif dealer_hand.hand_value > 21
+      return "win"
+    elsif dealer_hand.hand_value >= self.hand_value
+      return "loss"
+    else
+      return "win"
+    end
+  end
+
+  def payout_chart
+    payout_chart = {
+      "dealer blackjack" => 0,
+      "loss" => 0,
+      "bust" => 0,
+      "push" => 1,
+      "win" => 2,
+      "blackjack" => 2.5
+    }
+  end
+
+  def payout
+    if pay_multiplier = self.payout_chart[self.outcome]
+      pay_multiplier*self.bet
+    end
+  end
+
   # def convert_to_num
   #   new_array = []
   #   self.each{|card| 

@@ -25,6 +25,4 @@ class Game < ApplicationRecord
         deck = Card.all - self.dealt_cards
         deck.shuffle.first
     end
-
-    # def deal_card()
 end

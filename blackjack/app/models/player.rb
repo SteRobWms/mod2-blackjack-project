@@ -56,35 +56,35 @@ class Player < ApplicationRecord
     #     hands(find_value(dealer_cards_id))
     # end 
 
-    # def win_lose(player,dealer)
-    #   #player = [card_id1,card_id2,...] all player hand card id 
-    #   #dealer same as player
-    #     player = player_card_value(player)
-    #     dealer = dealer_cards_value(dealer)
-    #     if player.sum <= 21 
-    #       if black_jack(player) 
-    #         "Black Jack"
-    #       elsif black_jack(player) && black_jack(dealer) 
-    #         "Push" 
-    #       elsif black_jack(dealer)
-    #         "dealer win with Black Jack"
-    #       elsif player.sum > dealer.sum || dealer.sum > 21
-    #         "player win"
-    #       else
-    #         "player lose"
-    #       end 
-    #     else
-    #       "player lose"
-    #     end
-    # end
+    def win_lose(player,dealer)
+      #player = [card_id1,card_id2,...] all player hand card id 
+      #dealer same as player
+        player = player_card_value(player)
+        dealer = dealer_cards_value(dealer)
+        if player.sum <= 21 
+          if black_jack(player) 
+            "Black Jack"
+          elsif black_jack(player) && black_jack(dealer) 
+            "Push" 
+          elsif black_jack(dealer)
+            "dealer win with Black Jack"
+          elsif player.sum > dealer.sum || dealer.sum > 21
+            "player win"
+          else
+            "player lose"
+          end
+        else
+          "player lose"
+        end
+    end
       
-    # def black_jack(array) # <== card ids 
-    #   #check for the black jack 
-    #     return array.length == 2 && array.index(10) && array.index(11) ? true : false 
-    # end
+    def black_jack(array) # <== card ids 
+      #check for the black jack 
+        return array.length == 2 && array.index(10) && array.index(11) ? true : false 
+    end
 
-    # def amount_won?(your_bet, status) # status came form win_lose method
-    #     return status == "Black Jack" ? "+ #{your_bet * 1.5}" : status == "player win" ? "+ #{your_bet}" : status == "Push" ? "0" : "- #{your_bet}"
-    # end
+    def amount_won?(your_bet, status) # status came form win_lose method
+        return status == "Black Jack" ? "+ #{your_bet * 1.5}" : status == "player win" ? "+ #{your_bet}" : status == "Push" ? "0" : "- #{your_bet}"
+    end
 
 end

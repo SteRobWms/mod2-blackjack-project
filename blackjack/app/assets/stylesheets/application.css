@@ -393,7 +393,7 @@ label.info{
    font-size: 20px;
 }
 
-Win,.Loss,.Dealer_Blackjack,.Push,.Bust{
+.Win,.Loss,.Dealer_Blackjack,.Push,.Bust{
    font-size: 25px;
  }
  .Blackjack{

@@ -3,7 +3,7 @@ class CreatePlayerHands < ActiveRecord::Migration[6.0]
     create_table :player_hands do |t|
       t.integer :player_id
       t.integer :game_id
-      t.integer :bet
+      t.integer :bet, default: 10
       t.boolean :active, default: true 
       t.timestamps
     end

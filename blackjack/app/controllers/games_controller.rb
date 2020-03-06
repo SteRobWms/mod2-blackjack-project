@@ -17,10 +17,14 @@ class GamesController < ApplicationController
   end
 
   def create
+    # byebug
     @player = Player.find(session[:player_id])
     @game = Game.create(min_bet: 10, max_bet: 50)
     @dealer = Dealer.first
-    @player_hand = PlayerHand.create(game_id: @game.id, bet: 20, player_id: session[:player_id])
+    @player_hand = PlayerHand.create(game_id: @game.id, player_id: session[:player_id])
+    # if game_params[:bet]
+    #   @player_hand.update(bet: game_params[:bet].to_i)
+    # end
     @dealer_hand = DealerHand.create(game_id: @game.id, dealer_id: @dealer.id)
     @player.update(:bank => @player.bank - @player_hand.bet)
     2.times{@dealer_hand.deal_card}

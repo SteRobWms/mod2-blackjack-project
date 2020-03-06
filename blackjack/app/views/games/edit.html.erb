@@ -102,7 +102,7 @@
             <tr>
                 <th>Minimum Bet</th>
                 <th>Maximum Bet</th>
-                <th>Player Bet</th>
+                <th>Player Bet</th> 
             </tr>
             <tr>
                 <td><%= @game.min_bet %></td>
@@ -111,9 +111,16 @@
             </tr>
  
             <% if !@dealer_hand.active && !@player_hand.active %>
-              <label class = "<%= @player_hand.outcome %>"><%= @player_hand.outcome %></label><br>
-              <%= button_to "New Game", newgame_path ,method: "post", class: "new_game_button"%>
+                <label class = "<%= @player_hand.outcome.split(" ").join("_") %>"><%= @player_hand.outcome.upcase %></label><br>
+                <%= button_to "New Game", newgame_path ,method: "post", class: "new_game_button"%>
             <% end %>
         </table>
     </div>
 </body>
+
+
+<!-- <%= button_to "New Game", newgame_path ,method: "post", class: "new_game_button"%> --> 
+<!-- <%= form_with model: @game, url: newgame_path, method: "post" do |f| %>
+                    <%= f.select(:bet,[10,15,20,25,30,35,40,45,50]) %>
+                    <%= f.submit "New Game", class: "new_game_button" %>
+                <% end %> -->

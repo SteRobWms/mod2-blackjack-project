@@ -383,20 +383,102 @@ label.info{
    font-size: 20px;
 }
 
-.player_win,.player_lose,.player_black_jack{
-   font-size: 20px;
+.Win,.Loss,.Dealer_Blackjack,.Push,.Bust{
+   font-size: 25px;
 }
 
-.player_win{
-   color: rgb(91, 243, 91);
+.Blackjack{
+   font-size: 28px;
+   color: rgb(3, 28, 247);
+   animation: color_change 1s infinite;
 }
 
-.player_lose{
-   color: rgb(114, 6, 6);
+.Win{
+   color: rgb(0, 255, 0);
+   animation: resize_for_win 1s 1;
 }
 
-.player_black_jack{
-   color: rgb(54, 38, 38);
+.Loss,.Dealer_Blackjack,.Bust{
+   color: rgb(216, 0, 0);
+   animation: resize_for_loss 1s 1;
+}
+
+.Push{
+   color: rgb(252, 252, 252);
+   animation: resize_for_push 1s 1;
+}
+
+
+@keyframes resize_for_win{
+   0% {
+      color: rgb(0, 255, 0);font-size: 25px;
+   }
+   25% {
+      color: rgb(116, 250, 116);font-size: 28px;
+   }
+   50%{
+      color: rgb(197, 252, 197);font-size: 31px;
+   }
+   75%{
+      color: rgb(116, 250, 116);font-size: 28px;
+   }
+   100%{
+      color: rgb(0, 255, 0);font-size: 25px;
+   }
+}
+
+@keyframes resize_for_loss{
+   0% {
+      color: rgb(216, 0, 0);font-size: 25px;
+   }
+   25% {
+      color: rgb(153, 0, 0);font-size: 28px;
+   }
+   50%{
+      color: rgb(61, 1, 1);font-size: 31px;
+   }
+   75%{
+      color: rgb(153, 0, 0);font-size: 28px;
+   }
+   100%{
+      color: rgb(216, 0, 0);font-size: 25px;
+   }
+}
+
+@keyframes resize_for_push{
+   0% {
+      color: rgb(255,255,255);font-size: 25px;
+   }
+   25% {
+      color: rgb(168, 167, 167);font-size: 28px;
+   }
+   50%{
+      color: rgb(53, 52, 52);font-size: 31px;
+   }
+   75%{
+      color: rgb(168, 167, 167);font-size: 28px;
+   }
+   100%{
+      color: rgb(255,255,255);font-size: 25px;
+   }
+}
+
+@keyframes color_change{
+   0% {
+      color: rgb(255,255,255); font-size: 28px;
+   }
+   25% {
+      color: rgb(107, 1, 1); font-size: 29px;
+   }
+   50%{
+      color: rgb(255,255,255); font-size: 30px;
+   }
+   75%{
+      color: rgb(3, 31, 121); font-size: 29px;
+   }
+   100%{
+      color: rgb(255,255,255); font-size: 28px;
+   }
 }
 
 @keyframes fade{

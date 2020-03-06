@@ -110,7 +110,7 @@
                 <td><%= @player_hand[:bet] %></td>
             </tr>
  
-            <% if !@dealer_hand.active %>
+            <% if !@dealer_hand.active && !@player_hand.active %>
               <label class = "<%= @player_hand.outcome %>"><%= @player_hand.outcome %></label><br>
               <%= button_to "New Game", newgame_path ,method: "post", class: "new_game_button"%>
             <% end %>

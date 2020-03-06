@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   resources :dealer_hands, only: [:update]
   resources :dealer_hand_cards, only: [:update]
   resources :players, only: [:show, :edit, :update]
-  resources :games, only: [:new, :create, :show, :edit, :update]
+  resources :games, only: [ :show, :edit, :update]
+  #delete :new, :create,
 
   get "/", to: "application#login"
   get "/login", to: "sessions#new", as: "login"
@@ -15,6 +16,7 @@ Rails.application.routes.draw do
   get "/forgot_password", to: "passwords#edit", as: "forgot_password"
   patch "/forgot_password", to: "passwords#update"
   post "/player_hands/:id", to: "player_hands#stand", as: "stand"
+  post "/games/new", to: "games#create", as: "newgame"
 end
 
 

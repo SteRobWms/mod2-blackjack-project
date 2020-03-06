@@ -1,7 +1,7 @@
 <div>
     <div class="player_content content_img"><%= image_tag("pokerimg.png") %></div> 
     <div class="player_content content_button"><%= button_to "Edit", edit_player_path ,method: :get, class: "button"%></div> 
-    <div class="player_content content_button"><%= button_to "Play Game", new_game_path ,method: :get, class: "button"%></div> 
+    <div class="player_content content_button"><%= button_to "Play Game", newgame_path ,method: "post", class: "button"%></div> 
     <div class="player_content content_button "><%= form_with url: "/logout", method: :delete do |f| %> 
     <%= f.submit "Logout" ,class:"button" %>
 <% end %></div>
@@ -27,15 +27,6 @@
         <th>Bet</th>
         <th>Winnings</th>
     </tr>
-<%# @player.cards.each do |card_ids| %>
-    <%# <tr> %>
-        <td><%# @player.find_card(card_ids[:player]) %></td>
-        <td><%# @player.find_card(card_ids[:dealer]) %></td>
-        <td><%# @player.win_lose(card_ids[:player],card_ids[:dealer])%></td>
-        <td><%# card_ids[:bet] %></td>
-        <td><%# @player.amount_won?(card_ids[:bet],@player.win_lose(card_ids[:player],card_ids[:dealer])) %></td>
-    <%# </tr> %>
-<%# end %>
     <% @player.player_hands.each do |hand| %>
         <tr>
             <td><%= hand.game_id %></td>

@@ -1,6 +1,6 @@
 <body class="game_main_container">
     <br>
-    <div class= "game_container">
+    <div class= "dealer_contain">
         <label class= "info">Dealer</label class= "info">
         <br>
         <br>
@@ -42,9 +42,8 @@
             </div>
         <% end %> 
     </div>
-    <% (0...4).to_a.each do |player| %> 
-        <div class= "player_<%= player += 1 %>">
-            <label class= "info">Player <%= player %></label>
+        <div class= "player_1">
+            <label class= "info"><%= @player.username%></label>
             <br>
             <br>
             <div class= "game_card_img">
@@ -82,7 +81,6 @@
                 <% end %>
             </div>
         </div>
-    <% end %> 
     <div class="bet_table_div">
         <h1>Playing Game <%= @game.id %></h1>
         <br>

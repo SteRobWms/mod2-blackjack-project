@@ -130,46 +130,56 @@ div.player_info{
    display: block;
 }
 
-.game_container{ 
+.dealer_contain{ 
    margin: 0 auto;
    padding: 3px;
    text-align: center;
+   position: relative;
+   left: 45em; 
+   top: 2em; 
 }
 
-.player_1,.player_2,.player_3,.player_4{
+/* .player_1,.player_2,.player_3,.player_4{
    display: inline-block;
    position: relative;
    text-align: center;
-}
+} */
 .player_1{
+   display: inline-block;
+   position: relative;
+   text-align: center;
+   top: 14em;
+   left: 45em;
+}
+/* .player_1{
    bottom: 10px;
    left: 10em;
    float: left;
-}
+} */
 
-.player_4{
+/* .player_4{
    bottom: 19em;
    right: 10em;
    float: right;
-}
+} */
 
-.player_3{
+/* .player_3{
    top: 17em;
    float: right;
    right: 28em;
-}
+} */
 
-.player_2{
+/* .player_2{
    float: left;
    top: 17em;
    right: 2em;
    bottom: 50px;
-}
+} */
 
 .bet_table_div{
    position: relative;
-   top: 4em;
-   right: 15em;
+   left: 45em;
+   bottom: 14em;
 }
 
 .bet_table{

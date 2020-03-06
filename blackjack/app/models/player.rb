@@ -16,12 +16,12 @@ class Player < ApplicationRecord
         self.player_hands.map{|hand| hand.outcome}
     end
 
-    # def outcome_counts
-    #     outcome_hash = {"Blackjack" => 0, "Win" => 0, "Push" => 0, "Loss" => 0, "Dealer Blackjack" => 0}
-    #     self.player_hands.each do |hand|
-    #         outcome_hash[hand.outcome] += 1
-    #     end
-    #     outcome_hash
-    # end
+    def outcome_counts
+        outcome_hash = {"Blackjack" => 0, "Win" => 0, "Push" => 0, "Bust" => 0, "Loss" => 0, "Dealer Blackjack" => 0}
+        self.player_hands.each do |hand|
+            outcome_hash[hand.outcome] += 1
+        end
+        outcome_hash
+    end
 
 end

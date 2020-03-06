@@ -75,7 +75,7 @@ ActiveRecord::Schema.define(version: 2020_03_05_171358) do
     t.string "security_answer"
     t.string "name"
     t.integer "age"
-    t.integer "bank", default: 2000
+    t.integer "bank"
   end
 
 end

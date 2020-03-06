@@ -7,7 +7,7 @@ class CreatePlayers < ActiveRecord::Migration[6.0]
       t.string :security_answer
       t.string :name
       t.integer :age
-      t.integer :bank, default: 2000
+      t.integer :bank, default: 500
     end
   end
 end

@@ -27,12 +27,14 @@
         <th>Bet</th>
         <th>Winnings</th>
     </tr>
-    <% @player.player_hands.each do |hand| %>
+    <% @player.player_hands.reverse.each do |hand| %>
         <tr>
             <td><%= hand.game_id %></td>
             <td><%= hand.cards.map{|card| card.written_name} %></td>
             <td><%= hand.game.dealer_hand.cards.map{|card| card.written_name} %></td>
-            <td><%= "#{hand.hand_value} vs. #{hand.game.dealer_hand.hand_value}" %></td>
+            <td><%= hand.outcome %></td>
+            <td><%= hand.bet %></td>
+            <td><%= hand.payout %></td>
         </tr>
     <% end %>
     </tr>

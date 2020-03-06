@@ -2,6 +2,12 @@ class GamesController < ApplicationController
   before_action :current_game, only: [:show, :edit, :update]
   
   def show
+    @player_hand = @game.player_hands.first
+    @player = @player_hand.player
+    @player_hand_cards = @player_hand.player_hand_cards
+    @dealer_hand = @game.dealer_hand
+    @dealer = @dealer_hand.dealer
+    @dealer_hand_cards = @dealer_hand.dealer_hand_cards
   end
   
   def new

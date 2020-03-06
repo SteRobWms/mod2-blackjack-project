@@ -1,4 +1,18 @@
 <body class="game_main_container">
+    <head class="game_nav_header">
+        <nav class= "game_nav">
+            <ul class= "game_nav_links">
+                <li>
+                    <%= button_to "Back Show Page", player_path(session[:player_id]) ,method: "get", class: "game_nav_button"%>
+                </li>
+                <li>
+                    <%= form_with url: "/logout", method: :delete do |f| %> 
+                        <%= f.submit "Logout", class:"game_nav_button" %>
+                    <% end %>
+                </li>
+            </ul>
+        </nav>
+    </head>
     <br>
     <div class= "dealer_contain">
         <label class= "info">Dealer</label class= "info">
@@ -39,18 +53,9 @@
             </div>
             <% if @dealer_hand.active %>
                 <div class= "game_details">
-                    <%= button_to("Dealer Action", dealer_hand_path(@dealer_hand), method: "patch", class: "btn")%>
+                    <%= button_to("Hit Me", dealer_hand_path(@dealer_hand), method: "patch",class: "action_buton_in_game")%>
                 </div>
-            <% else %>
-                <% @dealer_hand.set_blackjack %>
-                <% @player_hand.set_blackjack %>
-                <%= @player_hand.outcome.upcase %>
-                <% @player.update(:bank => @player.bank + @player_hand.payout)%>
-                <div class= "game_details">
-                    <%= button_to "Play Again", newgame_path ,method: "post", class: "btn" %>
-                    <%= button_to "Player Info", @player , method: :get, class: "btn"  %>
-                </div>
-            <% end %>
+            <% end %> 
         <% end %> 
     </div>
         <div class= "player_1">
@@ -82,18 +87,17 @@
             </div>
             <div class= "game_details">
                 <% if @player_hand.active %>
-                    <%= button_to("Hit Me", player_hand_path(@player_hand), method: "patch")%>
+                    <%= button_to("Hit Me", player_hand_path(@player_hand), method: "patch",class: "action_buton_in_game")%>
                 <% end %> 
             </div>
             <div class= "game_details">
                 <% if @player_hand.active %>
-                    <%= button_to("Stand", stand_path(@player_hand), method: "post")%>
+                    <%= button_to("Stand", stand_path(@player_hand), method: "post" ,class: "action_buton_in_game")%>
                 <% end %>
             </div>
         </div>
     <div class="bet_table_div">
         <h1>Playing Game <%= @game.id %></h1>
-        <br>
         <table class= "bet_table ">
             <tr>
                 <th>Minimum Bet</th>
@@ -105,6 +109,11 @@
                 <td><%= @game.max_bet %></td>
                 <td><%= @player_hand[:bet] %></td>
             </tr>
+ 
+            <% if !@dealer_hand.active %>
+              <label class = "<%= @player_hand.outcome %>"><%= @player_hand.outcome %></label><br>
+              <%= button_to "New Game", newgame_path ,method: "post", class: "new_game_button"%>
+            <% end %>
         </table>
     </div>
 </body>

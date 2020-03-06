@@ -15,6 +15,9 @@
  */
  *{
     text-align: center;
+    box-sizing: border-box;
+    margin: 0 ;
+    padding: 0;
  }
 
  table , td{
@@ -51,7 +54,7 @@ body.game_main_container{
    position: absolute;
    align-items: center;
    background-position-y: -10em;
-   color: white;
+   color:white;
 }
 
 body.login,.register,.forgot_pass{
@@ -66,6 +69,13 @@ body.player_edit{
    background-size: cover;
 }
 
+body.player_show{
+   background: url(https://i.pinimg.com/originals/34/f8/81/34f88168afb8f62f700a84a35defa566.png);
+   background-repeat: no-repeat;
+   background-size: cover;
+   color: white;
+}
+
 div.login_form,.register_form,.forgot_pass_form,.edit_form{
    position: relative;
    border: 1px solid black;
@@ -77,6 +87,80 @@ div.login_form,.register_form,.forgot_pass_form,.edit_form{
    top: 2em;
    font-size: 20px;
 }
+
+/* nav bar for player show page */
+/* nav.player_show_nav{
+   background-color: rgb(57, 134, 87);
+} */
+
+li,.nav_button{
+   font-weight: 500;
+   font-size: 16px;
+   color: #edf0f1;
+   text-decoration: none;
+}
+
+header.player_nav_header {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   padding: 30px 10%; 
+   width: 20em;
+}
+
+header.game_nav_header{
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
+
+.nav_links,.game_nav_links{
+   list-style: none;
+}
+
+.nav_links li{
+   display: inline-block;
+   padding: 0px 20px;
+}
+
+.game_nav_links li{
+   display: inline-block;
+   padding: 0px 20px;
+}
+
+.nav_button{
+   margin: 5px;
+   width: 20em;
+   padding: 9px 25px;
+   background-color: rgb(34, 46, 39);
+   border: none;
+   border-radius: 5px;
+   cursor: pointer;
+   transition: all 0.2s ease 0;
+} 
+
+.nav_button:hover{
+   background-color: rgb(58, 167, 100) ;
+   color: rgb(16, 17, 17);
+}
+
+.game_nav_button{
+   margin: 5px;
+   width: 18em;
+   padding: 9px 25px;
+   background-color: rgb(170, 15, 4);
+   color: white;
+   border: none;
+   border-radius: 5px;
+   cursor: pointer;
+   transition: all 0.2s ease 0;
+}
+
+.game_nav_button:hover{
+   background-color: rgb(240, 57, 57);
+}
+
+/* end navbar */
 
 .input{
    width: 50%; 
@@ -122,12 +206,31 @@ div.content_button{
    margin: 0 4px;
 }
 
-div.player_info{
+table.player_table,td{
    border: 1px solid black;
+   position: relative;
 }
 
+table.player_table{
+   background-color: rgba(255,255,255,0.6);
+   color: black;
+   float: left;
+   left: 40px;
+   top: 40px;
+}
+
+
+/* div.player_info{
+   border: 1px solid black;
+} */
+
 .player_info_content{
-   display: block;
+   display: inline-block;
+   margin: 0 2em;
+}
+
+div.player_info_content h4{
+   font-size: 20px;
 }
 
 .dealer_contain{ 
@@ -135,8 +238,9 @@ div.player_info{
    padding: 3px;
    text-align: center;
    position: relative;
-   left: 45em; 
-   top: 2em; 
+   /* left: 45em;  */
+   left: 37vw;
+   top: 4vh; 
 }
 
 /* .player_1,.player_2,.player_3,.player_4{
@@ -148,8 +252,8 @@ div.player_info{
    display: inline-block;
    position: relative;
    text-align: center;
-   top: 14em;
-   left: 45em;
+   top: 23vh;
+   left: 38vw;
 }
 /* .player_1{
    bottom: 10px;
@@ -178,8 +282,9 @@ div.player_info{
 
 .bet_table_div{
    position: relative;
-   left: 45em;
-   bottom: 14em;
+   left: 38vw;
+   bottom: 23vh;
+   margin: 0;
 }
 
 .bet_table{
@@ -213,7 +318,7 @@ img{
 
 .imageTwo{
    z-index: 1;
-   bottom: 158px;
+   bottom: 15vh;
 }
 
 div.imageTwo{
@@ -234,8 +339,8 @@ div.imageTwo{
 
 figure.back{
    width: 7em;
-   height: 164px;
-   bottom: 166px;
+   height: 17vh;
+   bottom: 17vh;
    background-color: black;
    border-radius: 5px;
 }
@@ -245,10 +350,53 @@ figure.back{
    font-size: 12px;
 }
 
+.new_game_button{
+   width: 70%;
+   height: 30px;
+   background-color: rgb(41, 168, 41);
+   border-radius: 10px;
+   font-size: 20px;
+   color: white;
+   margin-bottom: 2px;
+   cursor: pointer;
+   transition: 0.3s ease-in-out ;
+}
+
+.new_game_button:hover{
+   background-color: rgb(17, 71, 17);
+   width: 75%;
+}
+
+.action_buton_in_game{
+   width: 5em;
+   height: 30px;
+   background-color: rgb(41, 168, 41);
+   border-radius: 10px;
+   font-size: 15px;
+   color: white;
+   cursor: pointer;
+}
+
 label.info{
-   background-color: black;
    border-radius: 5px;
    padding: 2px;
+   font-size: 20px;
+}
+
+.player_win,.player_lose,.player_black_jack{
+   font-size: 20px;
+}
+
+.player_win{
+   color: rgb(91, 243, 91);
+}
+
+.player_lose{
+   color: rgb(114, 6, 6);
+}
+
+.player_black_jack{
+   color: rgb(54, 38, 38);
 }
 
 @keyframes fade{

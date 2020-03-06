@@ -4,8 +4,6 @@ class PlayerHand < ApplicationRecord
   has_many :player_hand_cards
   has_many :cards, through: :player_hand_cards
 
-  validates :bet, presence: true
-
   def deal_card
     PlayerHandCard.create(player_hand_id: self.id, card_id: self.game.draw_unique_card.id)
   end
@@ -50,33 +48,33 @@ class PlayerHand < ApplicationRecord
     dealer_hand = self.game.dealer_hand
     if dealer_hand.blackjack?
       if self.blackjack?
-        return "push"
+        return "Push"
       else
-        return "dealer blackjack"
+        return "Dealer Blackjack"
       end
     elsif self.blackjack?
-      return "blackjack"
+      return "Blackjack"
     elsif self.hand_value > 21
-      return "bust"
+      return "Bust"
     elsif dealer_hand.hand_value > 21
-      return "win"
+      return "Win"
     elsif dealer_hand.hand_value == self.hand_value
-      return "push"
+      return "Push"
     elsif dealer_hand.hand_value > self.hand_value
-      return "loss"
+      return "Loss"
     else
-      return "win"
+      return "Win"
     end
   end
 
   def payout_chart
     payout_chart = {
-      "dealer blackjack" => 0,
-      "loss" => 0,
-      "bust" => 0,
-      "push" => 1,
-      "win" => 2,
-      "blackjack" => 2.5
+      "Dealer Blackjack" => 0,
+      "Loss" => 0,
+      "Bust" => 0,
+      "Push" => 1,
+      "Win" => 2,
+      "Blackjack" => 2.5
     }
   end
 

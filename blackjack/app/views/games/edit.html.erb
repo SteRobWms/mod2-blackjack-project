@@ -37,9 +37,20 @@
                     <%= @dealer_hand.hand_value %> / 21
                 </label>
             </div>
-            <div class= "game_details">
-                <%= button_to("Hit Me", dealer_hand_path(@dealer_hand), method: "patch", class: "btn")%>
-            </div>
+            <% if @dealer_hand.active %>
+                <div class= "game_details">
+                    <%= button_to("Dealer Action", dealer_hand_path(@dealer_hand), method: "patch", class: "btn")%>
+                </div>
+            <% else %>
+                <% @dealer_hand.set_blackjack %>
+                <% @player_hand.set_blackjack %>
+                <%= @player_hand.outcome.upcase %>
+                <% @player.update(:bank => @player.bank + @player_hand.payout)%>
+                <div class= "game_details">
+                    <%= button_to "Play Again", newgame_path ,method: "post", class: "btn" %>
+                    <%= button_to "Player Info", @player , method: :get, class: "btn"  %>
+                </div>
+            <% end %>
         <% end %> 
     </div>
         <div class= "player_1">
@@ -66,7 +77,7 @@
             </div>
             <div class= "game_details">
                 <label class= "info">
-                    <%= @player.bank %> $ 
+                    $ <%= @player.bank %>
                 </label>
             </div>
             <div class= "game_details">

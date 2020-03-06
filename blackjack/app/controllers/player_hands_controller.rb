@@ -3,6 +3,10 @@ class PlayerHandsController < ApplicationController
     def stand
         @current_hand = PlayerHand.find(params[:id])
         @current_hand.update(active: false)
+        @dealer_hand = @current_hand.game.dealer_hand
+        if @dealer_hand.blackjack?
+            @dealer_hand.update(active: false)
+        end
         redirect_to edit_game_path(@current_hand.game)
     end
 

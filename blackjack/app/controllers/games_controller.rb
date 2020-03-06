@@ -18,20 +18,14 @@ class GamesController < ApplicationController
 
   def create
     @game = Game.create(min_bet: 10, max_bet: 50)
-    @dealer = Dealer.all.sample
-    @player_hand = PlayerHand.new(game_id: @game.id, bet: 20, player_id: session[:player_id])
-    if @player_hand.valid?
-      @player_hand.save
-      @dealer_hand = DealerHand.create(game_id: @game.id, dealer_id: @dealer.id)
-      2.times{@dealer_hand.deal_card}
-      2.times{@player_hand.deal_card}
-      redirect_to edit_game_path(@game)
-    else
-      @game.destroy
-      flash[:error] = @player_hand.errors.full_messages
-      redirect_to new_game_path
-    end
-
+    @dealer = Dealer.first
+    @player_hand = PlayerHand.create(game_id: @game.id, bet: 20, player_id: session[:player_id])
+    @dealer_hand = DealerHand.create(game_id: @game.id, dealer_id: @dealer.id)
+    @player = @player_hand.player
+    @player.update(:bank => @player.bank - @player_hand.bet)
+    2.times{@dealer_hand.deal_card}
+    2.times{@player_hand.deal_card}
+    redirect_to edit_game_path(@game)
   end
 
   def edit

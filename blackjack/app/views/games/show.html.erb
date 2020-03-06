@@ -2,6 +2,11 @@
 <html>
     <head>
         <style>
+            body {
+                background-image: url("https://us.123rf.com/450wm/yamabikay/yamabikay1612/yamabikay161200085/69448418-poker-table-felt-background-high-resolution-photo-.jpg?ver=6");
+                background-position: top;
+                background-repeat: repeat;
+            }
             table {
                 border-collapse: collapse;
             }
@@ -20,10 +25,16 @@
             <tr>
                 <th>Minimum Bet</th>
                 <th>Maximum Bet</th>
+                <th>Outcome</th>
+                <th>Bet</th>
+                <th>Payout</th>
             </tr>
             <tr>
                 <td><%= @game.min_bet %></td>
                 <td><%= @game.max_bet %></td>
+                <td><%= @player_hand.outcome %></td>
+                <td><%= @player_hand.bet %></td>
+                <td><%= @player_hand.payout %></td>
             </tr>
         </table>
         <br>
@@ -31,17 +42,15 @@
             <tr>
                 <th>Dealer</th>
                 <% @game.dealer_hand_cards.each do |hand_card| %>
-                    <td><%= hand_card.card[:value]%><%= hand_card.card[:suit] %></td>
+                    <td><img src="<%= hand_card.card.image%>"></td>
+                <% end %>
+            </tr>               
+            <tr>
+                <th><%= @player.name %></th>
+                <% @player_hand_cards.each do |hand_card| %>
+                    <td><img src="<%= hand_card.card.image%>"></td>
                 <% end %>
             </tr>
-            <% @game.player_hands.each do |p_hand| %>
-                <tr>
-                    <th><%= p_hand.player.name %></th>
-                    <% p_hand.player_hand_cards.each do |hand_card| %>
-                        <td><%= hand_card.card[:value]%><%= hand_card.card[:suit] %><%# hand_card.card.card_to_numbers(hand_card.card) %></td>
-                    <% end %>
-                </tr>    
-            <% end %>
         </table>
     </body>
 </html>

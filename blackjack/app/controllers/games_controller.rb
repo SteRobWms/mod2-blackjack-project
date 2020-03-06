@@ -19,7 +19,6 @@ class GamesController < ApplicationController
   def create
     @player = Player.find(session[:player_id])
     @game = Game.create(min_bet: 10, max_bet: 50)
-ealerHand.create(game_id: @game.id, dealer_id: @dealer.id)
     @dealer = Dealer.first
     @player_hand = PlayerHand.create(game_id: @game.id, bet: 20, player_id: session[:player_id])
     @dealer_hand = DealerHand.create(game_id: @game.id, dealer_id: @dealer.id)
@@ -36,7 +35,7 @@ ealerHand.create(game_id: @game.id, dealer_id: @dealer.id)
     @dealer_hand = @game.dealer_hand
     @dealer = @dealer_hand.dealer
     @dealer_hand_cards = @dealer_hand.dealer_hand_cards
-    if @dealer_hand.hand_value > 18 
+    if @dealer_hand.hand_value > 16
       @dealer_hand.update(active: false)
       @player.update(bank: (@player.bank += @player_hand.payout))
     end

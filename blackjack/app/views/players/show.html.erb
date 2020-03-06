@@ -26,7 +26,13 @@
         <div class= "player_info_content">
             <h4>Bank:  $ <%= @player.bank %> </h4>
         </div>
-
+        <div class= "player_info_content">
+            <h4>Hand Results:  
+            <% @player.outcome_counts.each do |key,value| %>
+                <%= key %>: <%= value %> |
+            <% end %>
+            </h4>
+        </div>
 
         <br>
         <table class="player_table">

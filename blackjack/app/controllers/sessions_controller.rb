@@ -10,6 +10,7 @@ class SessionsController < ApplicationController
     @player = Player.find_by(username: params[:username])
     if @player && @player.authenticate(params[:password])
       session[:player_id] = @player.id 
+      # session[:bet] = 10
       redirect_to @player
     else
       flash[:login_error] = ["Invalid user name or password"]

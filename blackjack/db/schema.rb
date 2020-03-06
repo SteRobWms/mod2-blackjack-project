@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(version: 2020_03_05_171358) do
   create_table "player_hands", force: :cascade do |t|
     t.integer "player_id"
     t.integer "game_id"
-    t.integer "bet"
+    t.integer "bet", default: 10
     t.boolean "active", default: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

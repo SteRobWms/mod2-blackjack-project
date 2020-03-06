@@ -3,7 +3,7 @@
     <div class="player_content content_button"><%= button_to "Edit", edit_player_path ,method: :get, class: "button"%></div> 
     <div class="player_content content_button"><%= button_to "Play Game", new_game_path ,method: :get, class: "button"%></div> 
     <div class="player_content content_button "><%= form_with url: "/logout", method: :delete do |f| %> 
-    <%= f.submit "Logout" ,class:"button" %>
+    <%= f.submit "Logout", class:"button" %>
 <% end %></div>
 </div> 
 <div class="player_info">

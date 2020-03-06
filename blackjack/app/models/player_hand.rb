@@ -60,7 +60,9 @@ class PlayerHand < ApplicationRecord
       return "bust"
     elsif dealer_hand.hand_value > 21
       return "win"
-    elsif dealer_hand.hand_value >= self.hand_value
+    elsif dealer_hand.hand_value == self.hand_value
+      return "push"
+    elsif dealer_hand.hand_value > self.hand_value
       return "loss"
     else
       return "win"

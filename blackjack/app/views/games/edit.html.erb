@@ -82,7 +82,7 @@
             </div>
             <div class= "game_details">
                 <label class= "info">
-                    <%= @player.bank %> $ 
+                    $ <%= @player.bank %>
                 </label>
             </div>
             <div class= "game_details">
@@ -109,16 +109,11 @@
                 <td><%= @game.max_bet %></td>
                 <td><%= @player_hand[:bet] %></td>
             </tr>
-            <% if !@dealer_hand.active %>  
-                <% if @player_hand.payout == 0 %> 
-                    <label class="player_lose"><%= @player_hand.outcome %></label><br>
-                <% elsif @player_hand.payout > @player_hand[:bet] %> 
-                    <label class="player_black_jack"><%= @player_hand.outcome %></label><br>
-                <% else %>
-                    <label class="player_win"><%= @player_hand.outcome %></label><br>
-                <% end %> 
-                <%= button_to "New Game", newgame_path ,method: "post", class: "new_game_button"%>
-            <% end %> 
+ 
+            <% if !@dealer_hand.active %>
+              <label class = "<%= @player_hand.outcome %>"><%= @player_hand.outcome %></label><br>
+              <%= button_to "New Game", newgame_path ,method: "post", class: "new_game_button"%>
+            <% end %>
         </table>
     </div>
 </body>

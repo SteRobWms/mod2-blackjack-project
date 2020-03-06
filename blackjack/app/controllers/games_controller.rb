@@ -18,11 +18,12 @@ class GamesController < ApplicationController
 
   def create
     @player = Player.find(session[:player_id])
-    @player.update(bank: (@player.bank -= 20))
     @game = Game.create(min_bet: 10, max_bet: 50)
-    @dealer = Dealer.all.sample
+ealerHand.create(game_id: @game.id, dealer_id: @dealer.id)
+    @dealer = Dealer.first
     @player_hand = PlayerHand.create(game_id: @game.id, bet: 20, player_id: session[:player_id])
     @dealer_hand = DealerHand.create(game_id: @game.id, dealer_id: @dealer.id)
+    @player.update(:bank => @player.bank - @player_hand.bet)
     2.times{@dealer_hand.deal_card}
     2.times{@player_hand.deal_card}
     redirect_to edit_game_path(@game)

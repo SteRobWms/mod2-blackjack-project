@@ -22,6 +22,7 @@ class GamesController < ApplicationController
     @player_hand = PlayerHand.create(game_id: @game.id, player_id: session[:player_id])
     if params[:bet]
       @player_hand.update(bet: params[:bet].to_i)
+    else @player_hand.update(bet: @game[:min_bet])
     end
     @dealer_hand = DealerHand.create(game_id: @game.id, dealer_id: @dealer.id)
     @player.update(:bank => @player.bank - @player_hand.bet)

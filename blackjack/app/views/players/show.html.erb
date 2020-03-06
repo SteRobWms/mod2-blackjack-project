@@ -33,15 +33,17 @@
             <h4>Total Winnings:  <%= @player.total_winnings %> </h4>
         </div>
         <div class= "player_info_content">
-            <h4>Average Winnings: <%= @player.average_winnings %></h4>
+            <h4>Average Winnings:  <%= @player.average_winnings %> </h4>
         </div>
-        <div class= "player_info_content_outcome">
+        
+        <div class= "player_info_content">
             <h4>Hand Results:  
             <% @player.outcome_counts.each do |key,value| %>
-                <label><%= key %>: <%= value %></label>
+                <%= key %>: <%= value %> |
             <% end %>
             </h4>
         </div>
+
         <br>
         <table class="player_table">
         <tr>
@@ -54,7 +56,7 @@
         </tr>
         <% @player.player_hands.reverse.take(25).each do |hand| %>
             <tr>
-                <td><%= hand.game_id %></td>
+                <td><%= link_to hand.game_id, edit_game_path(hand.game_id) %></td>
                 <td class= "suit"><%= hand.cards.map{|card| card.written_name}.join("--") %></td>
                 <td class= "suit"><%= hand.game.dealer_hand.cards.map{|card| card.written_name}.join("--") %></td>
                 <td><%= hand.outcome %></td>

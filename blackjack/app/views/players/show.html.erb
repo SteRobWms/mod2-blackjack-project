@@ -1,7 +1,7 @@
 <div>
     <div class="player_content content_img"><%= image_tag("pokerimg.png") %></div> 
     <div class="player_content content_button"><%= button_to "Edit", edit_player_path ,method: :get, class: "button"%></div> 
-    <div class="player_content content_button"><%= button_to "Play Game", new_game_path ,method: :get, class: "button"%></div> 
+    <div class="player_content content_button"><%= button_to "Play Game", newgame_path ,method: "post", class: "button"%></div> 
     <div class="player_content content_button "><%= form_with url: "/logout", method: :delete do |f| %> 
     <%= f.submit "Logout" ,class:"button" %>
 <% end %></div>

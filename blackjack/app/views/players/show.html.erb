@@ -35,11 +35,12 @@
         <div class= "player_info_content">
             <h4>Average Winnings:  <%= @player.average_winnings %> </h4>
         </div>
-        
-        <div class= "player_info_content">
+        <br>
+        <br>
+        <div class= "player_info_content_outcome">
             <h4>Hand Results:  
             <% @player.outcome_counts.each do |key,value| %>
-                <%= key %>: <%= value %> |
+                <label><%= key %>: <%= value %></label> 
             <% end %>
             </h4>
         </div>

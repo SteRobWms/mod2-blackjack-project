@@ -212,7 +212,7 @@ table.player_table,td{
 }
 
 table.player_table{
-   background-color: rgba(255,255,255,0.6);
+   background-color: rgba(255,255,255,0.8);
    color: black;
    float: left;
    left: 40px;
@@ -229,7 +229,17 @@ table.player_table{
    margin: 0 2em;
 }
 
-div.player_info_content h4{
+.player_info_content_outcome{
+   margin: 0 2em;
+   margin-top: 2px;
+}
+
+.player_info_content_outcome label{
+   margin-left: 15px;
+   border-bottom: 1px solid white;
+}
+
+div.player_info_content,.player_info_content_outcome h4{
    font-size: 20px;
 }
 

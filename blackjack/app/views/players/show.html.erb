@@ -27,6 +27,16 @@
             <h4>Bank:  $ <%= @player.bank %> </h4>
         </div>
         <div class= "player_info_content">
+            <h4>Games Played:  <%= @player.total_hand_count %> </h4>
+        </div>
+        <div class= "player_info_content">
+            <h4>Total Winnings:  <%= @player.total_winnings %> </h4>
+        </div>
+        <div class= "player_info_content">
+            <h4>Average Winnings: <%= @player.average_winnings %></h4>
+        </div>
+        
+        <div class= "player_info_content">
             <h4>Hand Results:  
             <% @player.outcome_counts.each do |key,value| %>
                 <%= key %>: <%= value %> |
@@ -58,5 +68,3 @@
     </table>
     </div>
 </body>
-
-

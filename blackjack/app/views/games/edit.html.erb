@@ -51,11 +51,6 @@
                     <%= @dealer_hand.hand_value %> / 21
                 </label>
             </div>
-            <% if @dealer_hand.active %>
-                <div class= "game_details">
-                    <%= button_to("Hit Me", dealer_hand_path(@dealer_hand), method: "patch",class: "action_buton_in_game")%>
-                </div>
-            <% end %> 
         <% end %> 
     </div>
         <div class= "player_1">
@@ -122,3 +117,8 @@
 </body>
 
 <!-- <%= button_to "New Game", newgame_path ,method: "post", class: "new_game_button"%> --> 
+<!-- <% if @dealer_hand.active %>
+                <div class= "game_details">
+                    <%= button_to("Hit Me", dealer_hand_path(@dealer_hand), method: "patch",class: "action_buton_in_game")%>
+                </div>
+            <% end %>  --> 

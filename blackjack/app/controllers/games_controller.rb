@@ -41,6 +41,8 @@ class GamesController < ApplicationController
     if @dealer_hand.hand_value > 16
       @dealer_hand.update(active: false)
       @player.update(bank: (@player.bank += @player_hand.payout))
+    elsif @dealer_hand.hand_value <= 16 && !@player_hand.active
+      redirect_to @dealer_hand
     end
   end
 

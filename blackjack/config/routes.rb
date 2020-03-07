@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   resources :player_hands, only: [:update]
   resources :player_hand_cards, only: [:update]
-  resources :dealer_hands, only: [:update]
+  # resources :dealer_hands, only: [:update]
+  resources :dealer_hands, only: [:show]
   resources :dealer_hand_cards, only: [:update]
   resources :players, only: [:show, :edit, :update]
   resources :games, only: [ :show, :edit, :update]
@@ -17,6 +18,7 @@ Rails.application.routes.draw do
   patch "/forgot_password", to: "passwords#update"
   post "/player_hands/:id", to: "player_hands#stand", as: "stand"
   post "/games/new", to: "games#create", as: "newgame"
+  # patch "/dealer_hands/:id", to: "dealer_hands#update"
 end
 
 
